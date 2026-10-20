@@ -25,7 +25,7 @@ Website không cần Gemini API key. Cấu hình Vite không đưa khóa API và
 
 ## Giới hạn bản xem trước
 
-`clinic.draft = true`; noindex/nofollow ở HTML gốc và metadata từng trang. Chưa triển khai/publish.
+`clinic.draft = true`; noindex/nofollow ở HTML gốc và metadata từng trang. Bản xem trước chạy trên Vercel (https://drnguyenclinic.vercel.app), vẫn noindex.
 Dịch vụ chưa xác nhận có nhãn dự kiến. Đề cương bài viết có nhãn bản nháp, chưa được bác sĩ duyệt.
 Biểu mẫu chỉ kiểm tra dữ liệu; không gọi API, không lưu localStorage, không giả lập lịch thành công.
 Không có backend, analytics, bản đồ nhúng, địa chỉ/điện thoại giả, đánh giá hoặc cam kết kết quả điều trị.
@@ -38,6 +38,8 @@ Asset dùng `import.meta.env.BASE_URL`, Router dùng cùng basename, favicon dù
 Ví dụ kiểm tra: `npm run build -- --base=/phong-kham/ --outDir=dist-subpath`.
 Xem bằng `npm run preview -- --base=/phong-kham/ --outDir=dist-subpath --host 127.0.0.1 --port 4173`.
 Đây là SPA: hosting cần fallback các đường dẫn hợp lệ về index.html. Không trả HTML cho file ảnh bị thiếu.
+
+Vercel: project `drnguyenclinic` nối với GitHub; mỗi lần push lên `main` tự deploy production. `vercel.json` chỉ rewrite đường dẫn không có phần mở rộng về index.html (file thiếu vẫn 404), gửi security header lấy từ `config/security.mjs` (Vercel không đọc `_headers`) và chạy `npm run test:security` sau build. Đổi header thì sửa cả hai nơi; test sẽ báo nếu lệch.
 Chưa cấu hình domain/sitemap vì chưa có tên miền chính thức. Xem CONTENT-SEO.md trước khi xuất bản.
 
 

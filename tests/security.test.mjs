@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
-import { contentSecurityPolicy, metaCsp, staticHeadersFile } from '../config/security.mjs';
+import { contentSecurityPolicy, metaCsp, securityHeaders, staticHeadersFile } from '../config/security.mjs';
 import { decodeFragment } from '../src/utils/fragment.mjs';
 import { requestGuard } from '../config/request-guard.mjs';
 
@@ -36,6 +36,22 @@ test('production policy blocks inline code, framing, forms and network connectio
   assert.ok(html.replaceAll('&#39;', "'").includes(metaCsp));
   assert.equal(readFileSync('dist/_headers', 'utf8'), staticHeadersFile);
   assert.doesNotMatch(html, /<script(?![^>]*\bsrc=)[^>]*>[\s\S]+?<\/script>/i);
+});
+
+test('Vercel sends the shared security headers and only rewrites extensionless routes', () => {
+  const vercel = JSON.parse(readFileSync('vercel.json', 'utf8'));
+  const global = vercel.headers.find(rule => rule.source === '/(.*)');
+  assert.deepEqual(Object.fromEntries(global.headers.map(({ key, value }) => [key, value])), securityHeaders);
+  assert.equal(vercel.rewrites.length, 1);
+  assert.equal(vercel.rewrites[0].destination, '/index.html');
+  // The rewrite source is a plain regex group, so it can be checked directly.
+  const route = new RegExp(`^${vercel.rewrites[0].source}$`);
+  for (const path of ['/', '/lien-he', '/dich-vu/kham-phu-khoa', '/kien-thuc/chuan-bi-buoi-kham', '/khong-ton-tai']) {
+    assert.match(path, route);
+  }
+  for (const path of ['/assets/images/doctor/missing.jpg', '/favicon.ico', '/assets/index-abc123.js']) {
+    assert.doesNotMatch(path, route);
+  }
 });
 
 test('published files exclude source maps, credentials and active SVG content', () => {
