@@ -2,8 +2,9 @@
 
 ## Cần chủ phòng khám xác nhận
 
-- Địa chỉ đầy đủ, phường/xã, tỉnh/thành, vị trí bản đồ thực tế.
-- Hotline, liên kết Zalo, giờ làm việc, cách xác nhận lịch.
+- Vị trí ghim chính xác hoặc Google Place ID nếu muốn dẫn đường theo ghim thay vì địa chỉ.
+- Giờ làm việc và quy trình xác nhận lịch.
+- Link trang Facebook: điền `clinic.facebook` trong src/data/clinic.ts, nút Facebook (cụm nút nổi, thanh mobile, trang Liên hệ) tự hiện. Zalo đã xác nhận dùng số 0774 534 766.
 - Tiểu sử bác sĩ, quá trình công tác, bằng cấp và chuyên môn được xác nhận.
 - Phạm vi hoạt động được cấp phép và dịch vụ thực sự cung cấp; giá nếu muốn công bố.
 - Giấy phép và thông tin đơn vị chịu trách nhiệm khi cần hiển thị.
@@ -35,8 +36,18 @@
 8. App hiện render phía client. Với SEO công khai, nên bổ sung prerender/SSR cho các trang nội dung và metadata để crawler không chạy JavaScript vẫn đọc đầy đủ; chưa thực hiện trong bản thiết kế này.
 9. Xác minh Google Business Profile và Search Console bằng tài khoản của chủ phòng khám khi được yêu cầu. Thông tin tên/địa chỉ/điện thoại cần nhất quán.
 
-Không thể tối ưu ý định “gần tôi” theo địa phương khi chưa có địa chỉ xác nhận. Không có bảo đảm thứ hạng.
+Đã bổ sung ngữ cảnh địa phương Huế bằng địa chỉ do chủ phòng khám cung cấp. Không có bảo đảm thứ hạng.
 
 Nguồn đối chiếu:
 - Google, tiêu đề tìm kiếm: https://developers.google.com/search/docs/appearance/title-link
 - Google, structured data doanh nghiệp địa phương: https://developers.google.com/search/docs/appearance/structured-data/local-business
+
+
+## Thông tin chủ phòng khám đã cung cấp
+
+- PHÒNG KHÁM HIẾM MUỘN - SẢN PHỤ KHOA
+- TS. BS Nguyễn Đắc Nguyên
+- 184 Phạm Văn Đồng, phường Mỹ Thượng, TP Huế
+- Số điện thoại: 0774534766; liên kết gọi dùng tel:+84774534766.
+- Chỉ đường Google Maps dùng địa chỉ trên làm destination, không gán tọa độ hoặc Place ID chưa xác minh. Người dùng có thể chọn điểm xuất phát trên Google Maps.
+- Tài liệu Maps URLs: https://developers.google.com/maps/documentation/urls/get-started

@@ -4,7 +4,7 @@ import { clinic } from '../data/clinic';
 export default function SEO({ title, description, noindex = false }: { title: string; description: string; noindex?: boolean }) {
   const { pathname } = useLocation();
   useEffect(() => {
-    const fullTitle = title + ' | TS.BS. Đắc Nguyên';
+    const fullTitle = title + ' | ' + clinic.doctor;
     document.title = fullTitle;
     const meta = (key: string, content: string, property = false) => {
       const attr = property ? 'property' : 'name';

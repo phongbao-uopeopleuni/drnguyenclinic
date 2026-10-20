@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Script ran on page and returned:\n```json\n{\"viewport\":\"1440x1000\",\"overflow\":false,\"title\":\"Phòng khám hiếm muộn - sản phụ khoa tại Huế | TS. BS Nguyễn Đắc Nguyên\",\"h1\":\"TS. BS\\nNguyễn Đắc Nguyên\",\"portrait\":{\"x\":795.1875,\"y\":177.25,\"width\":517.2000122070312,\"height\":517.2000122070312,\"top\":177.25,\"right\":1312.3875122070312,\"bottom\":694.4500122070312,\"left\":795.1875},\"gallery\":false,\"font\":\"Lora, serif\",\"buttons\":[{\"label\":\"Gọi ngay 0774 534 766\",\"height\":56},{\"label\":\"Gọi 0774 534 766\",\"height\":51.400001525878906},{\"label\":\"Gọi 0774 534 766\",\"height\":51.400001525878906},{\"label\":\"0774 534 766\",\"height\":38}]}\n```"
+    }
+  ]
+}
