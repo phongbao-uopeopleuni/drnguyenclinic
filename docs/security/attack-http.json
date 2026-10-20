@@ -1,0 +1,307 @@
+{
+  "date": "2026-10-20T12:09:18.659Z",
+  "results": [
+    {
+      "port": 3000,
+      "path": "/.env.example",
+      "status": 403,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/.env.example?raw",
+      "status": 403,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/.env.example?url",
+      "status": 403,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/.git/HEAD",
+      "status": 403,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/.git/config?raw",
+      "status": 403,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/%2egit/HEAD",
+      "status": 403,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/docs/security/audit-before.json",
+      "status": 403,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/docs/security/audit-before.json?raw",
+      "status": 403,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/@fs/D:/dnclinic/.git/HEAD",
+      "status": 403,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/@fs/D:/dnclinic/.env.example?raw",
+      "status": 403,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/assets/../.git/HEAD",
+      "status": 403,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/assets/%2e%2e/.git/HEAD",
+      "status": 403,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/assets/%2e%2e%2f.git%2fHEAD",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/%00",
+      "status": 400,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/%",
+      "status": 400,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "path": "/%E0%A4%A",
+      "status": 400,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "test": "DNS rebinding Host",
+      "status": 403,
+      "passed": true
+    },
+    {
+      "port": 3000,
+      "test": "cross-origin read",
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/.env.example",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/.env.example?raw",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/.env.example?url",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/.git/HEAD",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/.git/config?raw",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/%2egit/HEAD",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/docs/security/audit-before.json",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/docs/security/audit-before.json?raw",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/@fs/D:/dnclinic/.git/HEAD",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/@fs/D:/dnclinic/.env.example?raw",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/assets/../.git/HEAD",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/assets/%2e%2e/.git/HEAD",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/assets/%2e%2e%2f.git%2fHEAD",
+      "status": 200,
+      "htmlFallback": true,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/%00",
+      "status": 400,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/%",
+      "status": 400,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/%E0%A4%A",
+      "status": 400,
+      "htmlFallback": false,
+      "leaked": false,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "test": "DNS rebinding Host",
+      "status": 403,
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "test": "cross-origin read",
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/",
+      "test": "security headers on SPA routes",
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/lien-he",
+      "test": "security headers on SPA routes",
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/dich-vu/unknown",
+      "test": "security headers on SPA routes",
+      "passed": true
+    },
+    {
+      "port": 4173,
+      "path": "/kien-thuc/unknown",
+      "test": "security headers on SPA routes",
+      "passed": true
+    }
+  ]
+}

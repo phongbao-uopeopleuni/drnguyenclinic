@@ -12,9 +12,10 @@ import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
+import { decodeFragment } from './utils/fragment.mjs';
 function ScrollToTop() {
  const { pathname, hash } = useLocation();
- useEffect(() => { if (hash) { document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView(); } else { window.scrollTo(0,0); } }, [pathname,hash]);
+ useEffect(() => { if (hash) { document.getElementById(decodeFragment(hash))?.scrollIntoView(); } else { window.scrollTo(0,0); } }, [pathname,hash]);
  return null;
 }
 export default function App() {
