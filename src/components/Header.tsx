@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
-import { clinic, directionsUrl } from '../data/clinic';
+import { Menu, X, ArrowUpRight, Phone } from 'lucide-react';
+import { clinic, directionsUrl, formatPhone, telUrl } from '../data/clinic';
 import { clinicGallery } from '../data/clinicGallery';
 import BrandLockup from './BrandLockup';
 import QuickContact from './QuickContact';
@@ -30,6 +30,7 @@ export default function Header() {
         <nav id="main-navigation" className={open ? 'navigation is-open' : 'navigation'} aria-label="Điều hướng chính">
           {navigation.map(([to, label]) => <NavLink key={to} end={to === '/'} to={to}>{label}</NavLink>)}
           {clinicGallery.length > 0 && <Link to="/#khong-gian">Không gian</Link>}
+          {clinic.hotline && <a className="header-hotline" href={telUrl(clinic.hotline)}><span className="hotline-icon"><Phone size={17} aria-hidden="true" /></span><span className="hotline-text"><small>Hotline</small><strong>{formatPhone(clinic.hotline)}</strong></span></a>}
         </nav>
       </div>
     </header>

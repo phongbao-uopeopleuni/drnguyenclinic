@@ -7,11 +7,26 @@ export const clinic = {
   website: null as string | null, phone: '0774534766', phoneDisplay: '0774 534 766', zalo: 'https://zalo.me/0774534766' as string | null,
   // Facebook button appears automatically once the page link is filled in.
   facebook: null as string | null,
+  // Separate hotline shown in the header, written like '09xxxxxxxx' or '1900xxxx'; null hides the button.
+  hotline: null as string | null,
   address: '184 Phạm Văn Đồng, phường Mỹ Thượng, TP Huế', hours: '17:30–19:30 hằng ngày', biography: null as string | null,
   qualifications: [] as string[],
 };
 export const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(clinic.address + ', Việt Nam')}`;
-export const phoneUrl = `tel:+84${clinic.phone.slice(1)}`;
+// Mobile/landline numbers start with 0 and dial as +84; 1800/1900 numbers are domestic-only.
+export const telUrl = (number: string) => {
+  const digits = number.replace(/\D/g, '');
+  if (number.trim().startsWith('+')) return 'tel:+' + digits;
+  return 'tel:' + (digits.startsWith('0') ? '+84' + digits.slice(1) : digits);
+};
+export const formatPhone = (number: string) => {
+  const digits = number.replace(/\D/g, '');
+  const d = number.trim().startsWith('+84') ? '0' + digits.slice(2) : digits;
+  if (d.length === 8) return `${d.slice(0, 4)} ${d.slice(4)}`;
+  if (d.length === 10) return `${d.slice(0, 4)} ${d.slice(4, 7)} ${d.slice(7)}`;
+  return number;
+};
+export const phoneUrl = telUrl(clinic.phone);
 export const services = [
   { slug: 'kham-phu-khoa', title: 'Khám phụ khoa', description: 'Thông tin về thăm khám và các vấn đề sức khỏe phụ khoa.', confirmed: false },
   { slug: 'cham-soc-thai-ky', title: 'Chăm sóc thai kỳ', description: 'Các nội dung cần trao đổi khi lên kế hoạch theo dõi thai kỳ.', confirmed: false },

@@ -4,6 +4,7 @@
 
 - Vị trí ghim chính xác hoặc Google Place ID nếu muốn dẫn đường theo ghim thay vì địa chỉ.
 - Giờ làm việc và quy trình xác nhận lịch.
+- Số hotline riêng: điền `clinic.hotline` trong src/data/clinic.ts (vd. dạng 09xxxxxxxx hoặc 1900xxxx), nút Hotline ở header và cuối menu điện thoại tự hiện, số tự định dạng.
 - Link trang Facebook: điền `clinic.facebook` trong src/data/clinic.ts, nút Facebook (cụm nút nổi, thanh mobile, trang Liên hệ) tự hiện. Zalo đã xác nhận dùng số 0774 534 766.
 - Tiểu sử bác sĩ, quá trình công tác, bằng cấp và chuyên môn được xác nhận.
 - Phạm vi hoạt động được cấp phép và dịch vụ thực sự cung cấp; giá nếu muốn công bố.
