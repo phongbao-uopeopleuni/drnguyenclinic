@@ -27,11 +27,12 @@ test('fragments tolerate malformed and hostile URL input as plain text', () => {
   assert.equal(decodeFragment('#li%C3%AAn-h%E1%BB%87'), 'liên-hệ');
 });
 
-test('production policy blocks inline code, framing, forms and network connections', () => {
+test('production policy blocks inline code and framing while limiting form traffic to Formspree', () => {
   assert.doesNotMatch(contentSecurityPolicy, /unsafe-inline|unsafe-eval|\*/);
-  for (const directive of ["script-src 'self'", "script-src-attr 'none'", "frame-ancestors 'none'", "form-action 'none'", "connect-src 'none'"]) {
+  for (const directive of ["script-src 'self'", "script-src-attr 'none'", "frame-ancestors 'none'", "form-action https://formspree.io", "connect-src https://formspree.io"]) {
     assert.ok(contentSecurityPolicy.includes(directive));
   }
+  assert.doesNotMatch(contentSecurityPolicy, /(?:connect-src|form-action)[^;]*https?:\/\/(?!formspree\.io(?:[;\s]|$))/);
   const html = readFileSync('dist/index.html', 'utf8');
   assert.ok(html.replaceAll('&#39;', "'").includes(metaCsp));
   assert.equal(readFileSync('dist/_headers', 'utf8'), staticHeadersFile);

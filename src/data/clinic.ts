@@ -2,13 +2,14 @@ export const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replac
 export const clinic = {
   name: 'Phòng khám Hiếm muộn & Sản phụ khoa tại Huế', displayName: 'Phòng khám Hiếm muộn & Sản phụ khoa tại Huế',
   // Wordmark printed in the logo artwork and the specialty line set beside it.
-  brandName: 'Phòng khám TS.BS. Đắc Nguyên', specialty: 'Hiếm muộn & Sản phụ khoa',
+  brandName: 'Phòng khám TS.BS. Đắc Nguyên', specialty: 'Hiếm muộn & Sản Phụ Khoa',
   doctor: 'TS.BS. Nguyễn Đắc Nguyên', doctorFull: 'Tiến sĩ, Bác sĩ Nguyễn Đắc Nguyên', draft: true,
   website: null as string | null, phone: '0774534766', phoneDisplay: '0774 534 766', zalo: 'https://zalo.me/0774534766' as string | null,
   // Facebook button appears automatically once the page link is filled in.
   facebook: null as string | null,
   // Separate hotline shown in the header, written like '09xxxxxxxx' or '1900xxxx'; null hides the button.
   hotline: null as string | null,
+  consultationEndpoint: 'https://formspree.io/f/mvkzjdro',
   address: '184 Phạm Văn Đồng, phường Mỹ Thượng, TP Huế', hours: '17:30–19:30 hằng ngày', biography: null as string | null,
   qualifications: [] as string[],
 };
@@ -35,13 +36,13 @@ export const services = [
 ];
 export const visibleServices = () => services.filter(s => clinic.draft || s.confirmed);
 export const steps = [
-  { title: 'Liên hệ đặt lịch', text: `Gọi ${clinic.phoneDisplay} để trao đổi nhu cầu và thời gian dự kiến.` },
+  { title: 'Liên hệ đặt lịch', text: `Gọi ${clinic.phoneDisplay} hoặc gửi biểu mẫu tư vấn để trao đổi nhu cầu và thời gian dự kiến.` },
   { title: 'Xác nhận lịch hẹn', text: 'Phòng khám liên hệ để thống nhất thời gian trước khi bạn đến.' },
   { title: 'Thăm khám & tư vấn', text: 'Trao đổi trực tiếp với bác sĩ về nhu cầu chăm sóc của bạn.' },
   { title: 'Hướng dẫn theo dõi', text: 'Nhận hướng dẫn phù hợp và lịch theo dõi nếu có chỉ định.' },
 ];
 export const faqs = [
-  { q: 'Tôi có thể đặt lịch khám bằng cách nào?', a: `Bạn có thể gọi ${clinic.phoneDisplay} để trao đổi và xác nhận lịch khám. Biểu mẫu trên website hiện chỉ dùng để xem trước, chưa tiếp nhận yêu cầu.` },
+  { q: 'Tôi có thể đặt lịch khám bằng cách nào?', a: `Bạn có thể gọi ${clinic.phoneDisplay} hoặc gửi biểu mẫu tư vấn trên website. Phòng khám sẽ liên hệ lại để trao đổi và xác nhận lịch; việc gửi biểu mẫu chưa phải là xác nhận lịch khám.` },
   { q: 'Tìm phòng khám sản gần tôi tại Huế: phòng khám ở đâu?', a: `Phòng khám ở ${clinic.address}. Bạn có thể mở Google Maps từ nút Chỉ đường trên website. Vui lòng gọi ${clinic.phoneDisplay} để xác nhận lịch trước khi đến.` },
   { q: 'Phòng khám chuyên khoa sinh sản có những dịch vụ nào?', a: 'Các nhóm chăm sóc trên website đang là nội dung dự kiến, chờ xác nhận phạm vi hoạt động. Website chưa công bố phòng khám thực hiện IVF hoặc IUI.' },
   { q: 'Tôi cần chuẩn bị gì trước buổi khám?', a: 'Sau khi lịch hẹn được xác nhận, hãy hỏi phòng khám về giấy tờ và các chuẩn bị phù hợp với buổi khám của bạn. Không gửi bệnh án hoặc thông tin sức khỏe chi tiết qua biểu mẫu công khai.' },

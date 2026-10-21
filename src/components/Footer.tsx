@@ -11,7 +11,7 @@ export default function Footer() {
         <Link to="/faq">Câu hỏi thường gặp</Link>
       </nav>
     </div>
-    {clinic.draft && <p className="draft-note">Bản xem trước — nội dung đang hoàn thiện, biểu mẫu chưa tiếp nhận đăng ký.</p>}
+    {clinic.draft && <p className="draft-note">Bản xem trước — nội dung đang hoàn thiện. Yêu cầu tư vấn chỉ trở thành lịch hẹn sau khi phòng khám liên hệ xác nhận.</p>}
     <div className="footer-bottom"><span>© {new Date().getFullYear()} {clinic.brandName}</span><div><Link to="/chinh-sach-bao-mat">Quyền riêng tư</Link><Link to="/dieu-khoan">Điều khoản</Link></div></div>
   </div></footer>;
 }
