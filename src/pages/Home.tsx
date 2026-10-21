@@ -24,7 +24,7 @@ export default function Home() {
         </div>
         <figure className="hero-portrait">
           <div className="portrait-image">
-            <SafeImage src={asset('assets/images/doctor/drpic.jpg?v=1b20f66af31c')} alt={'Chân dung ' + clinic.doctor} width={960} height={960} fetchPriority="high" />
+            <SafeImage src={asset('assets/images/doctor/drpic.jpg?v=1b20f66af31c')} alt={'Chân dung ' + clinic.doctor} width={1440} height={2560} fetchPriority="high" />
           </div>
           <figcaption className="portrait-caption">
             <div><span className="portrait-label">Bác sĩ của phòng khám</span><span className="portrait-name">{clinic.doctor}</span><span className="portrait-specialty">{clinic.specialty}</span></div>

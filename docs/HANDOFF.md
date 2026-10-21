@@ -1,5 +1,21 @@
 # Bàn giao thiết kế — 19/10/2026
 
+## Trạng thái hiện tại — 21/10/2026 (đọc mục này trước)
+
+**Đang chạy:** https://drnguyenclinic.vercel.app — bản xem trước, `noindex`. Vercel project `drnguyenclinic` nối GitHub `phongbao-uopeopleuni/drnguyenclinic`; push lên `main` là tự deploy production (khoảng 10 giây). Quy trình: nhánh riêng → lint/build/test → merge `--no-ff` vào `main` → push → kiểm tra trên production.
+
+**Đã xong:** giao diện và trải nghiệm (bảng màu ngà/hồng phấn/navy, header trong suốt/kính mờ, logo kèm dòng chuyên khoa), nút liên hệ nhanh (Gọi, Zalo; nút Facebook và Hotline làm sẵn, đang ẩn), biểu mẫu "Đăng ký tư vấn" bản xem trước, tăng cường bảo mật (CSP, security header, test), rà soát ECC không còn lỗi Critical/High/Medium (xem `docs/security/REVIEW.md`).
+
+**Việc còn lại, theo thứ tự:**
+1. Thông tin từ chủ phòng khám (chi tiết ở `docs/CONTENT-SEO.md`): số hotline (`clinic.hotline`), link Facebook (`clinic.facebook`), xác nhận giờ khám đang hiển thị, tiểu sử và bằng cấp bác sĩ, phạm vi dịch vụ, ảnh thật phòng khám, bài viết đã duyệt, tên miền, chính sách chính thức.
+2. Quyết định thiết kế đang mở: nút gọi ở hero và thẻ ảnh bác sĩ dùng xanh lá `#315C50` (lệch bảng màu navy/hồng); footer rút gọn không còn địa chỉ, điện thoại, giờ khám (nên có cho người dùng và SEO địa phương).
+3. Backend cho biểu mẫu tư vấn: kiểm tra dữ liệu phía server, chống spam/giới hạn tần suất, mở `connect-src`/`form-action` đúng domain ở cả `config/security.mjs` và `vercel.json`, bật `autocomplete`.
+4. Trước khi công khai: làm theo "Trước khi công khai" trong `docs/CONTENT-SEO.md`. Lưu ý `noindex` nằm ở **hai nơi**: `clinic.draft` và thẻ meta cứng trong `index.html`. Gắn tên miền trong Vercel (Settings → Domains) và đặt `clinic.website`.
+
+**Chưa kiểm chứng trực tiếp:** đoạn tự đóng menu khi màn hình rộng lên ≥1024px (`matchMedia` trong `Header.tsx`), vì khung trình duyệt kiểm thử không vẽ khi bị ẩn. Lớp bảo vệ bằng CSS (style menu mở chỉ áp dụng dưới 1024px) đã kiểm chứng.
+
+**Tài liệu:** `README.md` (chạy, build, deploy), `docs/CONTENT-SEO.md` (thông tin chờ xác nhận, checklist công khai), `docs/ASSETS.md` (ảnh, logo, cách thay ảnh bác sĩ), `docs/security/REVIEW.md` (bảo mật, kết quả rà soát), `docs/design-review/CONTRACT.md` (định hướng giao diện), `CLAUDE.md` (hướng dẫn cho phiên AI). Các mục bên dưới là nhật ký theo thời gian.
+
 ## Phạm vi
 
 Làm việc trong D:\dnclinic. Đọc tài liệu người dùng chỉ định tại C:\Users\Phong Bao\Downloads\website-prompt.txt, không sửa tài liệu đó.
