@@ -54,6 +54,16 @@ test('Vercel sends the shared security headers and only rewrites extensionless r
   }
 });
 
+test('form pattern attributes compile with the v flag browsers use', () => {
+  // An invalid pattern is ignored by the browser, which silently disables that validation.
+  const sources = readdirSync('src', { recursive: true }).map(String).filter(file => file.endsWith('.tsx'));
+  const patterns = sources.flatMap(file => [...readFileSync(`src/${file}`, 'utf8').matchAll(/\spattern="([^"]*)"/g)].map(match => [file, match[1]]));
+  assert.ok(patterns.length > 0);
+  for (const [file, pattern] of patterns) {
+    assert.doesNotThrow(() => new RegExp(`^(?:${pattern})$`, 'v'), `${file}: ${pattern}`);
+  }
+});
+
 test('published files exclude source maps, credentials and active SVG content', () => {
   const files = readdirSync('dist', { recursive: true }).map(String);
   for (const file of files) {
