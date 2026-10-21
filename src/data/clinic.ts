@@ -1,10 +1,13 @@
 export const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
 export const clinic = {
-  name: 'PHÒNG KHÁM HIẾM MUỘN - SẢN PHỤ KHOA', displayName: 'Phòng khám Hiếm muộn - Sản phụ khoa', doctor: 'TS. BS Nguyễn Đắc Nguyên', draft: true,
+  name: 'Phòng khám Hiếm muộn & Sản phụ khoa tại Huế', displayName: 'Phòng khám Hiếm muộn & Sản phụ khoa tại Huế',
+  // Wordmark printed in the logo artwork and the specialty line set beside it.
+  brandName: 'Phòng khám TS.BS. Đắc Nguyên', specialty: 'Hiếm muộn & Sản phụ khoa',
+  doctor: 'TS.BS. Nguyễn Đắc Nguyên', doctorFull: 'Tiến sĩ, Bác sĩ Nguyễn Đắc Nguyên', draft: true,
   website: null as string | null, phone: '0774534766', phoneDisplay: '0774 534 766', zalo: 'https://zalo.me/0774534766' as string | null,
   // Facebook button appears automatically once the page link is filled in.
   facebook: null as string | null,
-  address: '184 Phạm Văn Đồng, phường Mỹ Thượng, TP Huế', hours: null as string | null, biography: null as string | null,
+  address: '184 Phạm Văn Đồng, phường Mỹ Thượng, TP Huế', hours: '17:30–19:30 hằng ngày', biography: null as string | null,
   qualifications: [] as string[],
 };
 export const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(clinic.address + ', Việt Nam')}`;
@@ -27,7 +30,7 @@ export const faqs = [
   { q: 'Tìm phòng khám sản gần tôi tại Huế: phòng khám ở đâu?', a: `Phòng khám ở ${clinic.address}. Bạn có thể mở Google Maps từ nút Chỉ đường trên website. Vui lòng gọi ${clinic.phoneDisplay} để xác nhận lịch trước khi đến.` },
   { q: 'Phòng khám chuyên khoa sinh sản có những dịch vụ nào?', a: 'Các nhóm chăm sóc trên website đang là nội dung dự kiến, chờ xác nhận phạm vi hoạt động. Website chưa công bố phòng khám thực hiện IVF hoặc IUI.' },
   { q: 'Tôi cần chuẩn bị gì trước buổi khám?', a: 'Sau khi lịch hẹn được xác nhận, hãy hỏi phòng khám về giấy tờ và các chuẩn bị phù hợp với buổi khám của bạn. Không gửi bệnh án hoặc thông tin sức khỏe chi tiết qua biểu mẫu công khai.' },
-  { q: 'Phòng khám làm việc vào thời gian nào?', a: 'Giờ làm việc đang chờ xác nhận. Vui lòng kiểm tra lại mục liên hệ trước khi sắp xếp đến khám.' },
+  { q: 'Phòng khám làm việc vào thời gian nào?', a: `Phòng khám tiếp nhận thăm khám ${clinic.hours}. Vui lòng liên hệ xác nhận lịch trước khi đến.` },
 ];
 export const articles = [
   { slug: 'chuan-bi-buoi-kham', category: 'Trước buổi khám', title: 'Chuẩn bị cho một cuộc hẹn với bác sĩ', text: 'Bản nháp đề cương: xác nhận thời gian, địa điểm và ghi lại những câu hỏi muốn trao đổi. Nội dung chi tiết đang chờ bác sĩ duyệt.' },

@@ -64,7 +64,11 @@ html.menu-open .site-header { background: var(--ivory); }
 .header-row { display: flex; justify-content: space-between; align-items: center; gap: 28px; min-height: var(--header-h); }
 main { margin-top: calc(-1 * var(--header-h)); }
 .brand { width: 270px; flex-shrink: 0; }
-.brand img { width: 100%; height: auto; }
+/* Logo artwork plus the specialty set as text. Measured from the artwork: the wordmark column
+   starts at 25.1% of its width and the doctor's name ends at 62% of its height. */
+.brand-lockup { position: relative; display: block; container-type: inline-size; }
+.brand-lockup img { display: block; width: 100%; height: auto; }
+.brand-specialty { position: absolute; left: 25.1%; top: 70%; font: 500 clamp(12px, 5.1cqw, 13.5px)/1.2 "Be Vietnam Pro", sans-serif; letter-spacing: .1px; color: var(--rose-deep); white-space: nowrap; }
 .navigation { display: flex; align-items: center; gap: 24px; }
 .navigation > a:not(.button) { font-size: 15px; min-height: 44px; display: flex; align-items: center; white-space: nowrap; position: relative; }
 .navigation > a.active:not(.button)::after { content: ""; position: absolute; bottom: 4px; left: 0; right: 0; height: 2px; background: var(--rose); }
@@ -169,15 +173,9 @@ html.menu-open .floating-contact { display: none; }
 .cta-inner .contact-actions { flex-shrink: 0; flex-direction: column; align-items: stretch; gap: 8px; margin: 0; }
 .directions-light { color: #fff; }
 .footer { background: var(--navy-deep); color: #e0e4eb; padding: 55px 0 22px; }
-.footer-grid { display: grid; grid-template-columns: 1.2fr .8fr 1fr; gap: 65px; }
-.footer-logo { display: inline-block; background: var(--ivory); border-radius: 6px; padding: 14px 18px; }
-.footer-logo img { width: 250px; height: auto; }
+.footer-logo { display: inline-block; max-width: 100%; background: var(--ivory); border-radius: 6px; padding: 14px 18px; }
+.footer-logo .brand-lockup { width: 250px; max-width: 100%; }
 .footer p { color: #d5dce5; font-size: 14px; }
-.footer .footer-doctor { color: #fff; font-size: 16px; }
-.footer-grid h2 { font: 500 14px/1.6 "Be Vietnam Pro",sans-serif; margin: 0 0 20px; letter-spacing: 0; color: #fff; }
-.footer-grid > div > a:not(.footer-logo) { display: flex; align-items: center; gap: 6px; min-height: 38px; font-size: 14px; }
-.footer address { font-size: 16px; margin-bottom: 12px; }
-.footer-grid > div > .footer-phone { font-size: 24px; letter-spacing: .5px; font-variant-numeric: tabular-nums; color: #fff; }
 .footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .footer .draft-note { font-size: 13px; padding: 18px 0; margin-top: 32px; border-top: 1px solid #ffffff25; color: #d0d7e0; }
 .footer-bottom { display: flex; justify-content: space-between; gap: 24px; border-top: 1px solid #ffffff25; padding-top: 18px; margin-top: 12px; font-size: 13px; }
@@ -237,7 +235,6 @@ html.menu-open .floating-contact { display: none; }
   .hero-grid { gap: 55px; }
   .hero-copy h1 { font-size: 48px; }
   .care-layout, .faq-layout { gap: 55px; }
-  .footer-grid { gap: 40px; }
 }
 @media(max-width:1023px) {
   .utility-bar .container > span { display: none; }
@@ -260,8 +257,6 @@ html.menu-open .floating-contact { display: none; }
   .service-row { gap: 10px; grid-template-columns: 24px 1fr 22px; }
   .service-row h3 { font-size: 23px; }
   .steps { grid-template-columns: repeat(2,1fr); gap: 32px; }
-  .footer-grid { gap: 30px; grid-template-columns: 1.1fr .8fr 1fr; }
-  .footer-logo img { width: 200px; }
   .contact-grid, .about-grid { gap: 40px; }
   .cta-inner { gap: 30px; }
 }
@@ -324,9 +319,6 @@ html.menu-open .floating-contact { display: none; }
   .cta-inner .contact-actions { flex-direction: row; align-items: center; margin-top: 25px; gap: 20px; }
   .cta-inner .button { font-size: 14px; padding-inline: 16px; }
   .footer { padding-top: 40px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-  .footer-logo img { width: 250px; }
-  .footer-grid > div > a:not(.footer-logo) { min-height: 44px; }
   .footer-bottom { flex-direction: column; gap: 6px; font-size: 13px; }
   .footer .draft-note { margin-top: 28px; }
   .page-heading { padding: calc(36px + var(--header-h)) 0 36px; }
@@ -348,3 +340,51 @@ html.menu-open .floating-contact { display: none; }
   *, *::before, *::after { scroll-behavior: auto!important; animation: none!important; transition: none!important; }
 }
 
+
+/* Consultation request form */
+.consultation-panel { min-width: 0; background: var(--warm-white); border: 1px solid var(--rule); border-top: 3px solid var(--rose); border-radius: 12px; box-shadow: 0 18px 48px -36px #172e4b50; }
+.consultation-form { padding: 32px; border-top: 0; }
+.consultation-form .eyebrow { margin-bottom: 10px; }
+.consultation-form h2 { margin-top: 0; }
+.consultation-form .form-intro { margin-top: 12px; font-size: 15px; }
+.consultation-form .field-hint { margin-top: 7px; font-size: 12px; line-height: 1.7; }
+.consultation-form .required-note { margin-bottom: 18px; }
+.consultation-form textarea { display: block; width: 100%; min-height: 130px; resize: vertical; border: 1px solid var(--field-border); border-radius: 4px; background: var(--warm-white); color: var(--navy); padding: 11px 12px; font: inherit; font-size: 16px; }
+.consultation-form input, .consultation-form textarea { scroll-margin-top: 120px; }
+.consultation-form .appointment-note { text-align: center; margin-top: 14px; }
+.consultation-form .form-status:empty { margin: 0; }
+.consultation-form .form-status:not(:empty) { padding: 14px; border-left: 3px solid var(--rose); background: var(--blush-wash); }
+@media (min-width: 640px) and (max-width: 1000px) { .consultation-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } }
+@media (max-width: 639px) { .consultation-form { padding: 24px 20px; } }
+
+/* Slow CTA halo: text remains steady and readable. */
+.cta-attention { position: relative; isolation: isolate; }
+.cta-attention::before { content: ""; position: absolute; inset: -1px; border: 2px solid var(--rose); border-radius: inherit; opacity: 0; pointer-events: none; animation: cta-halo 4.8s ease-out infinite; }
+.float-zalo.cta-attention::before { border-color: #0068ff; }
+.cta-attention-delayed::before { animation-delay: 2.4s; }
+.cta-attention:hover::before, .cta-attention:focus-visible::before, .cta-attention:active::before { animation: none; opacity: 0; }
+@keyframes cta-halo {
+  0%, 55%, 100% { opacity: 0; transform: scale(1); }
+  60% { opacity: .55; transform: scale(1); }
+  85% { opacity: 0; transform: scale(1.12, 1.24); }
+}
+@media (prefers-reduced-motion: reduce) { .cta-attention::before { animation: none; } }
+
+.hero-copy .contact-actions .button-consultation { background: var(--warm-white); border-color: var(--navy); color: var(--navy); }
+.hero-copy .contact-actions .button-consultation:hover { background: var(--blush-wash); border-color: var(--navy); }
+#tu-van { scroll-margin-top: 110px; }
+
+/* A single quiet consultation reminder after services. */
+.consultation-corner { display: flex; align-items: center; justify-content: space-between; gap: 28px; margin-bottom: 64px; padding: 24px 28px; border-left: 3px solid var(--rose); border-radius: 0 8px 8px 0; background: var(--blush-wash); }
+.consultation-corner h2 { font-size: 23px; letter-spacing: -.3px; }
+.consultation-corner p { font-size: 14px; margin-top: 8px; }
+.consultation-corner .text-link { flex-shrink: 0; color: var(--navy); }
+@media (max-width: 639px) {
+  .consultation-corner { flex-direction: column; align-items: flex-start; gap: 12px; padding: 22px 20px; margin-bottom: 40px; }
+  .consultation-corner h2 { font-size: 21px; }
+}
+
+.footer-summary { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+.footer-help { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.footer-help a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
+@media (max-width: 639px) { .footer-summary { flex-direction: column; align-items: flex-start; gap: 20px; } }
