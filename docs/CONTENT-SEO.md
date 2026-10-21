@@ -3,7 +3,7 @@
 ## Cần chủ phòng khám xác nhận
 
 - Vị trí ghim chính xác hoặc Google Place ID nếu muốn dẫn đường theo ghim thay vì địa chỉ.
-- Giờ làm việc và quy trình xác nhận lịch.
+- Giờ làm việc: website đang hiển thị "17:30–19:30 hằng ngày" (`clinic.hours`, dùng ở hero, trang Liên hệ và FAQ); chủ phòng khám cần xác nhận lại. Quy trình xác nhận lịch.
 - Số hotline riêng: điền `clinic.hotline` trong src/data/clinic.ts (vd. dạng 09xxxxxxxx hoặc 1900xxxx), nút Hotline ở header và cuối menu điện thoại tự hiện, số tự định dạng.
 - Link trang Facebook: điền `clinic.facebook` trong src/data/clinic.ts, nút Facebook (cụm nút nổi, thanh mobile, trang Liên hệ) tự hiện. Zalo đã xác nhận dùng số 0774 534 766.
 - Tiểu sử bác sĩ, quá trình công tác, bằng cấp và chuyên môn được xác nhận.
@@ -45,6 +45,8 @@ Nguồn đối chiếu:
 
 
 ## Thông tin chủ phòng khám đã cung cấp
+
+Danh sách dưới đây là nguyên văn lúc nhận. Website hiện hiển thị tên "Phòng khám Hiếm muộn & Sản phụ khoa tại Huế", bác sĩ "TS.BS. Nguyễn Đắc Nguyên" (đầy đủ: "Tiến sĩ, Bác sĩ Nguyễn Đắc Nguyên"), số điện thoại dạng "0774 534 766"; nguồn duy nhất là `src/data/clinic.ts`.
 
 - PHÒNG KHÁM HIẾM MUỘN - SẢN PHỤ KHOA
 - TS. BS Nguyễn Đắc Nguyên

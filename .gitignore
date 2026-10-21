@@ -9,3 +9,5 @@ coverage/
 
 .npm-cache/
 dist-subpath/
+# Shared Claude config (.claude/launch.json) is committed; personal settings are not.
+.claude/settings.local.json

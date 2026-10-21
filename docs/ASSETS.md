@@ -2,12 +2,12 @@
 
 ## Tài sản đã sử dụng
 - Gốc `logo-horizontal.svg` → `public/assets/brand/logo-horizontal.svg`
-- Gốc `drpic.jpg` → `public/assets/images/doctor/drpic.jpg`
 - Gốc `favicon.ico` → `public/favicon.ico`
+- Ảnh bác sĩ đang dùng: `public/assets/images/doctor/drpic.jpg`, JPEG dọc 1440×2560, khoảng 167 KB. Đây là ảnh mới đã thay ảnh gốc; file `drpic.jpg` ở thư mục gốc dự án vẫn là ảnh cũ 960×960, không được website dùng.
 
-Các file gốc được giữ lại. Bản sao giữ nguyên byte, không chỉnh nội dung ảnh hoặc logo.
-Ảnh bác sĩ JPEG 960×960 chỉ khoảng 54 KB nên giữ nguyên, chưa chuyển WebP/AVIF.
-Logo SVG hiển thị contain, không invert; footer đặt trên nền trắng ngọc trai.
+Logo và favicon là bản sao giữ nguyên byte của file gốc, không chỉnh nội dung.
+Ảnh bác sĩ được gọi kèm `?v=<12 ký tự đầu của SHA-256>` (hiện là `?v=1b20f66af31c`) ở `src/pages/Home.tsx` và `src/pages/About.tsx` để trình duyệt tải ảnh mới. Khi thay ảnh: cập nhật giá trị `?v=` và `width`/`height` ở cả hai nơi. Trang chủ cắt ảnh vuông, trang Giới thiệu cắt 4:5 (`object-position` giữ khuôn mặt); xem lại cả hai sau khi thay.
+Logo SVG hiển thị contain, không invert; footer đặt trên nền ngà. Logo gốc không có dòng chuyên khoa: dòng "Hiếm muộn & Sản phụ khoa" là chữ HTML trong `src/components/BrandLockup.tsx`, đặt ở 25,1% chiều rộng và 70% chiều cao logo (đo từ file SVG). Nếu thay file logo phải đo lại hai giá trị này trong `.brand-specialty` (`src/index.css`).
 URL public không chứa /public. Dùng hàm asset() với đường dẫn tương đối để hỗ trợ base URL.
 
 ## Thêm ảnh thật phòng khám

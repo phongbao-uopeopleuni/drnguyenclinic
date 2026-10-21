@@ -113,7 +113,7 @@ main { margin-top: calc(-1 * var(--header-h)); }
 .portrait-image > img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: center; outline: 1px solid #00000010; outline-offset: -1px; }
 .portrait-caption { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 12px 12px; color: #29332F; }
 .portrait-caption > div { min-width: 0; }
-.portrait-label { display: block; color: #5F6963; font-size: 11px; line-height: 1.5; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 7px; }
+.portrait-label { display: block; color: #5F6963; font-size: 12px; line-height: 1.5; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 7px; }
 .portrait-name { display: block; font-size: 17px; font-weight: 600; line-height: 1.5; text-wrap: balance; }
 .portrait-specialty { display: block; color: #5F6963; font-size: 13px; margin-top: 4px; }
 .portrait-profile { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background: #315C50; color: #fff; transition: background-color .16s; }
@@ -200,7 +200,8 @@ main { margin-top: calc(-1 * var(--header-h)); }
 .prose ul { list-style: disc; padding-left: 24px; }
 .prose .button { margin-top: 24px; }
 .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: start; }
-.about-photo { width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 3px; }
+/* The portrait source is 9:16; crop to 4:5 and keep the face in frame. */
+.about-photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 22%; border-radius: 18px; }
 .muted { color: #596171; }
 .notice { padding: 14px 18px; background: var(--blush-wash); border-left: 2px solid var(--rose); color: #4f596a; font-size: 14px; margin: 22px 0; }
 .contact-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 90px; align-items: start; }
@@ -302,7 +303,7 @@ main { margin-top: calc(-1 * var(--header-h)); }
   .portrait-image { border-radius: 14px; }
   .portrait-caption { padding: 18px 6px 10px; gap: 12px; }
   .portrait-name { font-size: 16px; }
-  .portrait-label { font-size: 10px; letter-spacing: .6px; }
+  .portrait-label { font-size: 12px; letter-spacing: .6px; }
   .section { padding-block: 48px; }
   .care-layout, .faq-layout { grid-template-columns: 1fr; gap: 28px; }
   h2 { font-size: 31px; }

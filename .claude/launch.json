@@ -1,0 +1,26 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dnclinic-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000,
+      "url": "http://127.0.0.1:3000"
+    },
+    {
+      "name": "dnclinic-preview",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview", "--", "--port", "4173"],
+      "port": 4173,
+      "url": "http://127.0.0.1:4173"
+    },
+    {
+      "name": "dnclinic-subpath",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview", "--", "--base=/phong-kham/", "--outDir=dist-subpath", "--port", "4174"],
+      "port": 4174,
+      "url": "http://127.0.0.1:4174"
+    }
+  ]
+}
