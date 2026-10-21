@@ -29,7 +29,7 @@ for (const port of [3000, 4173]) {
   for (const path of paths) {
     const res = await request(port, path);
     const htmlFallback = res.body.includes('<div id="root">');
-    const leaked = /ref: refs\/heads\/|\[core\]|GEMINI_API_KEY|auditReportVersion/.test(res.body);
+    const leaked = /ref: refs\/heads\/|\[core\]|GEMINI_API_KEY|VITE_\*|auditReportVersion/.test(res.body);
     const malformed = ['/%00', '/%', '/%E0%A4%A'].includes(path);
     results.push({ port, path, status: res.status, htmlFallback, leaked,
       // No response bodies are persisted, so secrets cannot leak into reports.

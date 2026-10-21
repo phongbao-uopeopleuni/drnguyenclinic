@@ -11,8 +11,20 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
   const location = useLocation();
-  useEffect(() => setOpen(false), [location.pathname, location.hash]);
-  useEffect(() => { document.documentElement.classList.toggle('menu-open', open); }, [open]);
+  // location.key also changes when a link points at the page already open.
+  useEffect(() => setOpen(false), [location.key]);
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle('menu-open', open);
+    return () => root.classList.remove('menu-open');
+  }, [open]);
+  // The menu only exists below 1024px; close it when the screen widens (e.g. a tablet rotates).
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    const close = () => { if (desktop.matches) setOpen(false); };
+    desktop.addEventListener('change', close);
+    return () => desktop.removeEventListener('change', close);
+  }, []);
   // Transparent over the opening section, frosted glass once the page scrolls.
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 8);
