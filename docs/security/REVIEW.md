@@ -126,4 +126,4 @@ Debug bản build:
 - Build đường dẫn con `/phong-kham/` (`MSYS_NO_PATHCONV=1` khi chạy trong Git Bash): trang con, ảnh `?v=`, logo, link nội bộ và `#tu-van` đều đúng, console sạch.
 
 Ghi nhận, có chủ ý:
-- Biểu mẫu tư vấn chỉ kiểm tra phía trình duyệt và `autoComplete="off"` cho bản xem trước. Khi nối backend: kiểm tra lại dữ liệu phía server, giới hạn tần suất, mở `connect-src`/`form-action` đúng domain, bật `autocomplete` (name, street-address, tel).
+- Biểu mẫu tư vấn gửi tới Formspree bằng `fetch`, dùng native validation và `autocomplete` phù hợp; CSP chỉ cho phép `connect-src`/`form-action` tới `https://formspree.io`. Form có honeypot `_gotcha`, khóa gửi lặp và không lưu dữ liệu vào Web Storage. Cloudflare Turnstile và giới hạn tần suất riêng vẫn chưa có; chỉ tích hợp Turnstile sau khi có Site Key và cấu hình Secret Key trong Formspree.

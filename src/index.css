@@ -364,8 +364,12 @@ main { margin-top: calc(-1 * var(--header-h)); }
 .consultation-form textarea { display: block; width: 100%; min-height: 130px; resize: vertical; border: 1px solid var(--field-border); border-radius: 4px; background: var(--warm-white); color: var(--navy); padding: 11px 12px; font: inherit; font-size: 16px; }
 .consultation-form input, .consultation-form textarea { scroll-margin-top: 120px; }
 .consultation-form .appointment-note { text-align: center; margin-top: 14px; }
+.form-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.consultation-form .button:disabled { cursor: wait; opacity: .68; box-shadow: none; }
 .consultation-form .form-status:empty { margin: 0; }
 .consultation-form .form-status:not(:empty) { padding: 14px; border-left: 3px solid var(--rose); background: var(--blush-wash); }
+.consultation-form .form-status-success:not(:empty) { border-left-color: #315c50; background: #edf5f1; color: #23483f; }
+.consultation-form .form-status-error:not(:empty) { border-left-color: #a43d45; background: #fff0f0; color: #742b31; }
 @media (min-width: 640px) and (max-width: 1000px) { .consultation-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } }
 @media (max-width: 639px) { .consultation-form { padding: 24px 20px; } }
 

@@ -28,7 +28,7 @@ Bắt đầu mỗi phiên bằng mục "Trạng thái hiện tại" đầu `docs
 
 - **Không bịa dữ liệu thật.** Số điện thoại, link, giờ khám, bằng cấp, dịch vụ phải do chủ phòng khám cung cấp. Chưa có thì để `null`, hỏi người dùng, ghi vào `docs/CONTENT-SEO.md`. Số mẫu dùng để test phải xóa trước khi commit.
 - Tên và số liệu lấy từ `clinic.ts`, không ghi cứng. Riêng `index.html` (title, description, meta robots) và `metadata.json` là chữ tĩnh: đổi `clinic.ts` thì sửa cả hai file này.
-- CSP rất chặt: `default-src 'none'`, `connect-src 'none'`, `form-action 'none'`, không `unsafe-inline`. Nghĩa là không dùng thuộc tính `style` trong HTML, không script inline, không `dangerouslySetInnerHTML`. Thêm dịch vụ ngoài (analytics, backend, bản đồ) thì sửa cả `config/security.mjs` và `vercel.json`.
+- CSP rất chặt: `default-src 'none'`; `connect-src` và `form-action` hiện chỉ mở cho `https://formspree.io`; không có `unsafe-inline`. Không dùng thuộc tính `style` trong HTML, script inline hoặc `dangerouslySetInnerHTML`. Khi thêm dịch vụ ngoài (Turnstile, analytics, backend, bản đồ), phải sửa đồng bộ `config/security.mjs`, `vercel.json` và kiểm thử bảo mật.
 - Header trong suốt đè lên khối đầu trang (`main` có margin-top âm). Trang mới phải mở đầu bằng `.hero` hoặc `PageHeading`, nếu không nội dung bị header che.
 - Giao diện: chữ hiển thị ≥ 12px, tương phản ≥ 4.5:1, mỗi trang đúng 1 H1, không tràn ngang ở 320/360/768/1024/1440px. Mỗi màn hình chỉ một CTA cố định (nút nổi hoặc thanh đáy) cộng CTA trong nội dung.
 - Thuộc tính `pattern` của input phải hợp lệ với cờ regex `v` mà trình duyệt dùng, tức phải escape `(` `)` `-` trong `[...]`. Test sẽ báo nếu sai.

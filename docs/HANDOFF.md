@@ -2,14 +2,16 @@
 
 ## Trạng thái hiện tại — 21/10/2026 (đọc mục này trước)
 
+**Form tư vấn:** đã kết nối Formspree tại endpoint công khai `https://formspree.io/f/mvkzjdro`. Form gửi bằng `fetch`, giữ native validation, có honeypot `_gotcha`, khóa gửi lặp trong lúc chờ, thông báo thành công/lỗi có hỗ trợ trình đọc màn hình và không lưu dữ liệu vào Web Storage. CSP chỉ mở `connect-src` và `form-action` đến `https://formspree.io`. Cloudflare Turnstile chưa được bật vì chưa có Site Key; Secret Key phải cấu hình trong Formspree và không được đưa vào source/Git. Việc gửi form chỉ tạo yêu cầu liên hệ, không xác nhận lịch khám.
+
 **Đang chạy:** https://drnguyenclinic.vercel.app — bản xem trước, `noindex`. Vercel project `drnguyenclinic` nối GitHub `phongbao-uopeopleuni/drnguyenclinic`; push lên `main` là tự deploy production (khoảng 10 giây). Quy trình: nhánh riêng → lint/build/test → merge `--no-ff` vào `main` → push → kiểm tra trên production.
 
-**Đã xong:** giao diện và trải nghiệm (bảng màu ngà/hồng phấn/navy, header trong suốt/kính mờ, logo kèm dòng chuyên khoa), nút liên hệ nhanh (Gọi, Zalo; nút Facebook và Hotline làm sẵn, đang ẩn), biểu mẫu "Đăng ký tư vấn" bản xem trước, tăng cường bảo mật (CSP, security header, test), rà soát ECC không còn lỗi Critical/High/Medium (xem `docs/security/REVIEW.md`).
+**Đã xong:** giao diện và trải nghiệm (bảng màu ngà/hồng phấn/navy, header trong suốt/kính mờ, logo kèm dòng chuyên khoa), nút liên hệ nhanh (Gọi, Zalo; nút Facebook và Hotline làm sẵn, đang ẩn), biểu mẫu "Đăng ký tư vấn" gửi qua Formspree, tăng cường bảo mật (CSP, security header, test), rà soát ECC không còn lỗi Critical/High/Medium (xem `docs/security/REVIEW.md`).
 
 **Việc còn lại, theo thứ tự:**
 1. Thông tin từ chủ phòng khám (chi tiết ở `docs/CONTENT-SEO.md`): số hotline (`clinic.hotline`), link Facebook (`clinic.facebook`), xác nhận giờ khám đang hiển thị, tiểu sử và bằng cấp bác sĩ, phạm vi dịch vụ, ảnh thật phòng khám, bài viết đã duyệt, tên miền, chính sách chính thức.
 2. Quyết định thiết kế đang mở: nút gọi ở hero và thẻ ảnh bác sĩ dùng xanh lá `#315C50` (lệch bảng màu navy/hồng); footer rút gọn không còn địa chỉ, điện thoại, giờ khám (nên có cho người dùng và SEO địa phương).
-3. Backend cho biểu mẫu tư vấn: kiểm tra dữ liệu phía server, chống spam/giới hạn tần suất, mở `connect-src`/`form-action` đúng domain ở cả `config/security.mjs` và `vercel.json`, bật `autocomplete`.
+3. Hoàn thiện chống spam cho biểu mẫu tư vấn: tạo Cloudflare Turnstile Site Key cho tên miền, cấu hình Secret Key trong Formspree, tích hợp widget và chỉ mở thêm các Turnstile origin tối thiểu trong CSP. Sau khi có lưu lượng thực tế, theo dõi spam trước khi quyết định có cần endpoint riêng để giới hạn tần suất hay không.
 4. Trước khi công khai: làm theo "Trước khi công khai" trong `docs/CONTENT-SEO.md`. Lưu ý `noindex` nằm ở **hai nơi**: `clinic.draft` và thẻ meta cứng trong `index.html`. Gắn tên miền trong Vercel (Settings → Domains) và đặt `clinic.website`.
 
 **Chưa kiểm chứng trực tiếp:** đoạn tự đóng menu khi màn hình rộng lên ≥1024px (`matchMedia` trong `Header.tsx`), vì khung trình duyệt kiểm thử không vẽ khi bị ẩn. Lớp bảo vệ bằng CSS (style menu mở chỉ áp dụng dưới 1024px) đã kiểm chứng.
