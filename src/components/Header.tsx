@@ -34,7 +34,7 @@ export default function Header() {
   }, []);
   return <>
     <a className="skip-link" href="#main">Bỏ qua menu, đến nội dung</a>
-    <div className="utility-bar"><div className="container"><span>{clinic.displayName}</span><a href={directionsUrl} target="_blank" rel="noopener noreferrer">{clinic.address} <ArrowUpRight size={13} aria-hidden="true" /><span className="sr-only"> (Google Maps, mở tab mới)</span></a></div></div>
+    <div className="utility-bar"><div className="container"><span>{clinic.displayName}</span><a href={directionsUrl} target="_blank" rel="noopener noreferrer">{clinic.address} <ArrowUpRight size={13} aria-hidden="true" /><span className="sr-only"> (mở dịch vụ chỉ đường ở tab mới)</span></a></div></div>
     <header className={scrolled ? 'site-header is-scrolled' : 'site-header'} onKeyDown={e => { if (e.key === 'Escape') { setOpen(false); toggle.current?.focus(); } }}>
       <div className="container header-row">
         <BrandLockup className="brand" />

@@ -43,7 +43,7 @@ export const steps = [
 ];
 export const faqs = [
   { q: 'Tôi có thể đặt lịch khám bằng cách nào?', a: `Bạn có thể gọi ${clinic.phoneDisplay} hoặc gửi biểu mẫu tư vấn trên website. Phòng khám sẽ liên hệ lại để trao đổi và xác nhận lịch; việc gửi biểu mẫu chưa phải là xác nhận lịch khám.` },
-  { q: 'Tìm phòng khám sản gần tôi tại Huế: phòng khám ở đâu?', a: `Phòng khám ở ${clinic.address}. Bạn có thể mở Google Maps từ nút Chỉ đường trên website. Vui lòng gọi ${clinic.phoneDisplay} để xác nhận lịch trước khi đến.` },
+  { q: 'Tìm phòng khám sản gần tôi tại Huế: phòng khám ở đâu?', a: `Phòng khám ở ${clinic.address}. Bạn có thể dùng nút Chỉ đường trên website. Vui lòng gọi ${clinic.phoneDisplay} để xác nhận lịch trước khi đến.` },
   { q: 'Phòng khám chuyên khoa sinh sản có những dịch vụ nào?', a: 'Các nhóm chăm sóc trên website đang là nội dung dự kiến, chờ xác nhận phạm vi hoạt động. Website chưa công bố phòng khám thực hiện IVF hoặc IUI.' },
   { q: 'Tôi cần chuẩn bị gì trước buổi khám?', a: 'Sau khi lịch hẹn được xác nhận, hãy hỏi phòng khám về giấy tờ và các chuẩn bị phù hợp với buổi khám của bạn. Không gửi bệnh án hoặc thông tin sức khỏe chi tiết qua biểu mẫu công khai.' },
   { q: 'Phòng khám làm việc vào thời gian nào?', a: `Phòng khám tiếp nhận thăm khám ${clinic.hours}. Vui lòng liên hệ xác nhận lịch trước khi đến.` },

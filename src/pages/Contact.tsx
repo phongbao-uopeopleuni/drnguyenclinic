@@ -47,7 +47,7 @@ export default function Contact() {
         setMessage('Đã gửi thông tin. Phòng khám sẽ liên hệ để trao đổi và xác nhận thời gian phù hợp; đây chưa phải là lịch hẹn đã được xác nhận.');
       } else if (response.status === 422) {
         setSubmitState('error');
-        setMessage('Thông tin chưa được Formspree chấp nhận. Vui lòng kiểm tra lại các trường rồi thử gửi lại.');
+        setMessage('Thông tin chưa được tiếp nhận. Vui lòng kiểm tra lại các trường rồi thử gửi lại.');
       } else {
         setSubmitState('error');
         setMessage('Hiện chưa thể gửi biểu mẫu. Vui lòng thử lại sau hoặc liên hệ phòng khám qua điện thoại/Zalo.');
@@ -61,7 +61,7 @@ export default function Contact() {
   }
 
   return <>
-    <SEO title="Liên hệ và đặt lịch khám" description={`${clinic.name} - ${clinic.doctor}. Địa chỉ: ${clinic.address}. Gọi ${clinic.phoneDisplay} để đặt lịch hoặc mở Google Maps để chỉ đường.`} />
+    <SEO title="Liên hệ và đặt lịch khám" description={`${clinic.name} — ${clinic.doctor}. Địa chỉ: ${clinic.address}. Gọi ${clinic.phoneDisplay} để đặt lịch hoặc mở chỉ đường.`} />
     <PageHeading label="Phòng khám tại Huế" title="Liên hệ & đặt lịch" description="Gọi điện hoặc gửi thông tin để phòng khám trao đổi nhu cầu và xác nhận thời gian trước khi bạn đến khám." />
     <section className="section container contact-grid">
       <div>
@@ -92,11 +92,13 @@ export default function Contact() {
         >
           <span className="eyebrow">Đăng ký tư vấn</span>
           <h2 id="consultation-title">Thông tin cần tư vấn</h2>
-          <p className="form-intro">Để lại thông tin để phòng khám liên hệ trao đổi và xác nhận thời gian thăm khám phù hợp.</p>
-          <p id="form-data-note" className="notice">Thông tin được gửi đến phòng khám qua Formspree. Vui lòng không nhập bệnh án hoặc thông tin sức khỏe chi tiết.</p>
+          <p className="form-intro">Để lại thông tin và chọn nhu cầu tổng quát để phòng khám liên hệ trao đổi, xác nhận thời gian phù hợp.</p>
+          {clinic.draft && <p className="notice"><strong>Bản thử nghiệm:</strong> chưa gửi dữ liệu thật qua biểu mẫu cho đến khi phòng khám thay hoặc xác nhận nhà cung cấp được phép xử lý dữ liệu sức khỏe nhạy cảm. Vui lòng gọi điện/Zalo nếu cần liên hệ.</p>}
+          <p id="form-data-note" className="notice">Thông tin được chuyển đến phòng khám để liên hệ với bạn. Nhóm nhu cầu bạn chọn có thể phản ánh dữ liệu sức khỏe nhạy cảm; chỉ chọn nhóm tổng quát và không cung cấp bệnh án, kết quả xét nghiệm hoặc thông tin sức khỏe chi tiết.</p>
           <p className="field-hint required-note">Các trường có dấu * là bắt buộc.</p>
 
           <input type="hidden" name="_subject" value="Yêu cầu tư vấn mới từ website phòng khám" />
+          <input type="hidden" name="privacyPolicyVersion" value="1.0 — 01/11/2026" />
           <div className="form-honeypot" aria-hidden="true">
             <label htmlFor="consultation-website">Nếu bạn là người dùng, hãy để trống trường này</label>
             <input id="consultation-website" name="_gotcha" type="text" tabIndex={-1} autoComplete="off" />
@@ -107,9 +109,9 @@ export default function Contact() {
             <input id="full-name" name="fullName" autoComplete="name" required minLength={2} maxLength={80} pattern=".*\S.*" placeholder="Nhập họ và tên của bạn" />
           </div>
           <div className="field">
-            <label htmlFor="address">Địa chỉ *</label>
-            <input id="address" name="address" autoComplete="street-address" required maxLength={200} pattern=".*\S.*" placeholder="Phường/xã, tỉnh/thành phố" aria-describedby="address-hint" />
-            <p id="address-hint" className="field-hint">Bạn có thể chỉ ghi phường/xã và tỉnh/thành phố.</p>
+            <label htmlFor="area">Khu vực/phường, xã (không bắt buộc)</label>
+            <input id="area" name="area" autoComplete="address-level3" maxLength={100} placeholder="Ví dụ: phường Mỹ Thượng" aria-describedby="area-hint" />
+            <p id="area-hint" className="field-hint">Chỉ cung cấp khu vực nếu bạn muốn; không cần ghi địa chỉ nhà cụ thể.</p>
           </div>
           <div className="consultation-row">
             <div className="field">
@@ -122,13 +124,24 @@ export default function Contact() {
             </div>
           </div>
           <div className="field">
-            <label htmlFor="request">Yêu cầu thăm khám *</label>
-            <textarea id="request" name="consultationRequest" rows={4} required minLength={5} maxLength={1000} placeholder="Ví dụ: Tôi muốn tư vấn trước khi mang thai và mong được khám vào buổi chiều." aria-describedby="request-hint" />
-            <p id="request-hint" className="field-hint">Mô tả ngắn nhu cầu của bạn (tối đa 1.000 ký tự). Không gửi bệnh án hoặc thông tin sức khỏe chi tiết.</p>
+            <label htmlFor="consultation-type">Nhu cầu tư vấn *</label>
+            <select id="consultation-type" name="consultationType" required defaultValue="">
+              <option value="" disabled>Chọn nhu cầu tư vấn</option>
+              <option value="Khám phụ khoa">Khám phụ khoa</option>
+              <option value="Thai kỳ">Thai kỳ</option>
+              <option value="Sức khỏe sinh sản">Sức khỏe sinh sản</option>
+              <option value="Hiếm muộn">Hiếm muộn</option>
+              <option value="Khác">Khác</option>
+            </select>
+          </div>
+          <div className="field">
+            <label htmlFor="note">Ghi chú ngắn (không bắt buộc)</label>
+            <textarea id="note" name="note" rows={3} maxLength={500} placeholder="Ví dụ: Tôi mong được liên hệ vào buổi chiều." aria-describedby="note-hint" />
+            <p id="note-hint" className="field-hint">Không nhập bệnh án, kết quả xét nghiệm hoặc thông tin sức khỏe chi tiết. Tối đa 500 ký tự.</p>
           </div>
           <label className="consent">
-            <input type="checkbox" required name="consent" value="Đã đồng ý" />
-            <span>Tôi đã đọc <Link to="/chinh-sach-bao-mat">thông tin quyền riêng tư</Link> và đồng ý để phòng khám sử dụng thông tin trên nhằm liên hệ tư vấn.</span>
+            <input type="checkbox" required name="consent" value="Đồng ý xử lý thông tin để liên hệ tư vấn — Chính sách quyền riêng tư 1.0 ngày 01/11/2026" />
+            <span>Tôi đã đọc <Link to="/chinh-sach-bao-mat">Chính sách quyền riêng tư phiên bản 1.0</Link> và đồng ý để phòng khám xử lý thông tin trên, bao gồm nhóm nhu cầu có thể phản ánh dữ liệu sức khỏe nhạy cảm, chỉ nhằm liên hệ và trao đổi yêu cầu tư vấn.</span>
           </label>
           <button className="button" type="submit" disabled={submitState === 'submitting'}>
             {submitState === 'submitting' ? 'Đang gửi…' : 'Gửi đăng ký tư vấn'} <ArrowRight size={18} aria-hidden="true" />

@@ -8,12 +8,14 @@
 - Link trang Facebook: điền `clinic.facebook` trong src/data/clinic.ts, nút Facebook (cụm nút nổi, thanh mobile, trang Liên hệ) tự hiện. Zalo đã xác nhận dùng số 0774 534 766.
 - Tiểu sử bác sĩ, quá trình công tác, bằng cấp và chuyên môn được xác nhận.
 - Phạm vi hoạt động được cấp phép và dịch vụ thực sự cung cấp; giá nếu muốn công bố.
-- Giấy phép và thông tin đơn vị chịu trách nhiệm khi cần hiển thị.
+- Tên pháp lý đầy đủ của đơn vị vận hành, số giấy phép hoạt động, mã số thuế/đăng ký và email phụ trách dữ liệu cá nhân.
 - Ảnh thật được phép sử dụng.
 - Bài viết hoàn chỉnh và người duyệt chuyên môn.
 - Tên miền chính thức.
-- Đơn vị tiếp nhận dữ liệu, thời hạn lưu trữ, đầu mối liên hệ, chính sách riêng tư/điều khoản đã duyệt.
-- Backend tiếp nhận lịch, kiểm tra dữ liệu phía server, chống spam, giới hạn tần suất, bảo vệ dữ liệu và trạng thái gửi/thành công/thất bại thật.
+- Duyệt cam kết vận hành trong chính sách: xóa yêu cầu tư vấn tối đa 90 ngày sau khi đóng/lần liên hệ cuối; quy trình thực hiện quyền dữ liệu, khiếu nại, sự cố; phân quyền và xóa bản trong Formspree/hộp thư.
+- Xác nhận vị trí xử lý và nhà thầu phụ của Formspree, Vercel, Google; hoàn tất hợp đồng và hồ sơ đánh giá tác động xử lý/chuyển dữ liệu xuyên biên giới khi pháp luật yêu cầu.
+- Thay Formspree bằng endpoint/hợp đồng cho phép xử lý dữ liệu sức khỏe nhạy cảm, hoặc có xác nhận bằng văn bản phù hợp của nhà cung cấp. Chính sách Formspree hiện yêu cầu không thu thập dữ liệu nhạy cảm; không được dùng dữ liệu thật khi website còn ở bản nháp.
+- Biểu mẫu hiện gửi yêu cầu tư vấn thật qua Formspree, có trạng thái gửi/thành công/thất bại, khóa gửi lặp, honeypot và giới hạn domain. Form ghi phiên bản Chính sách quyền riêng tư 1.0 và câu đồng ý cụ thể với nhóm nhu cầu có thể phản ánh dữ liệu sức khỏe nhạy cảm. Việc còn lại: cấu hình Cloudflare Turnstile khi có Site Key và theo dõi spam trước khi quyết định có cần endpoint giới hạn tần suất riêng hay không.
 
 ## Đã triển khai
 
@@ -29,7 +31,7 @@
 
 1. Hoàn thiện dữ liệu thực tế và duyệt nội dung. Chỉ đặt service.confirmed=true cho dịch vụ được xác nhận.
 2. Đặt clinic.website thành origin HTTPS thật. Cấu hình base tương ứng nếu có thư mục con.
-3. Chỉnh FAQ cho kênh liên hệ và lịch hoạt động thật. Thay các trang điều khoản/quyền riêng tư bản nháp.
+3. Chỉnh FAQ cho kênh liên hệ và lịch hoạt động thật. Luật sư/đơn vị phụ trách của phòng khám duyệt ba trang `/chinh-sach-bao-mat`, `/dieu-khoan`, `/bao-mat`; điền đủ thông tin pháp lý còn thiếu và xác nhận các quy trình vận hành nêu trong chính sách.
 4. Sau khi kiểm tra hoàn tất mới đổi clinic.draft=false **và** sửa robots trong index.html sang index, follow. Bài nháp vẫn không được công bố; cần triển khai cơ chế bài đã duyệt trước khi mở nội dung chính thức.
 5. Tạo sitemap.xml bằng tên miền thật và URL nội dung đã duyệt; robots.txt trỏ đến sitemap thật.
 6. Sau khi có địa chỉ/phạm vi đã xác minh, thêm MedicalClinic/Physician JSON-LD phù hợp dữ liệu thực, không tự điền tọa độ hoặc giờ mở cửa.
