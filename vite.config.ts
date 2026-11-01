@@ -35,5 +35,6 @@ export default defineConfig({
     headers: { 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer' },
   },
   preview: { host: '127.0.0.1', strictPort: true, headers: securityHeaders },
-  build: { sourcemap: false },
+  // Keep decorative SVGs as same-origin files: the production CSP intentionally disallows data: images.
+  build: { sourcemap: false, assetsInlineLimit: 0 },
 });

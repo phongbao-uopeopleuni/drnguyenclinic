@@ -3,13 +3,13 @@ export const contentSecurityPolicy = [
   "default-src 'none'",
   "script-src 'self'",
   "script-src-attr 'none'",
-  "style-src 'self' https://fonts.googleapis.com",
-  "font-src 'self' https://fonts.gstatic.com",
+  "style-src 'self'",
+  "font-src 'self'",
   "img-src 'self'",
-  "connect-src 'none'",
+  "connect-src https://formspree.io",
   "object-src 'none'",
   "base-uri 'none'",
-  "form-action 'none'",
+  "form-action https://formspree.io",
   "frame-ancestors 'none'",
 ].join('; ');
 

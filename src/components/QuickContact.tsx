@@ -15,7 +15,7 @@ export default function QuickContact() {
       <a className="mobile-call cta-attention" href={phoneUrl}><Phone size={20} aria-hidden="true" /><span>Gọi ngay<span className="sr-only"> {clinic.phoneDisplay}</span></span></a>
       {clinic.zalo && <a href={clinic.zalo} target="_blank" rel="noopener noreferrer"><MessageCircle className="icon-zalo" size={20} aria-hidden="true" /><span>Zalo{newTab}</span></a>}
       {clinic.facebook && <a href={clinic.facebook} target="_blank" rel="noopener noreferrer"><Facebook className="icon-facebook" size={20} aria-hidden="true" /><span>Facebook{newTab}</span></a>}
-      <a href={directionsUrl} target="_blank" rel="noopener noreferrer"><MapPin size={20} aria-hidden="true" /><span>Chỉ đường<span className="sr-only"> Google Maps (mở tab mới)</span></span></a>
+      <a href={directionsUrl} target="_blank" rel="noopener noreferrer"><MapPin size={20} aria-hidden="true" /><span>Chỉ đường<span className="sr-only"> (mở dịch vụ chỉ đường ở tab mới)</span></span></a>
     </nav>
   </>;
 }

@@ -1,15 +1,21 @@
 # Bàn giao thiết kế — 19/10/2026
 
-## Trạng thái hiện tại — 21/10/2026 (đọc mục này trước)
+## Trạng thái hiện tại — 01/11/2026 (đọc mục này trước)
+
+**Form tư vấn:** đã kết nối Formspree tại endpoint công khai `https://formspree.io/f/mvkzjdro`. Form gửi bằng `fetch`, giữ native validation, có honeypot `_gotcha`, khóa gửi lặp trong lúc chờ, thông báo thành công/lỗi có hỗ trợ trình đọc màn hình và không lưu dữ liệu vào Web Storage. Trường bắt buộc gồm họ tên, số điện thoại, ngày mong muốn, nhóm nhu cầu tổng quát và đồng ý quyền riêng tư; khu vực/phường xã và ghi chú ngắn là không bắt buộc. Form nhắc không nhập bệnh án, kết quả xét nghiệm hoặc thông tin sức khỏe chi tiết. CSP chỉ mở `connect-src` và `form-action` đến `https://formspree.io`. Cloudflare Turnstile chưa được bật vì chưa có Site Key; Secret Key phải cấu hình trong Formspree và không được đưa vào source/Git. Việc gửi form chỉ tạo yêu cầu liên hệ, không xác nhận lịch khám.
+
+**Chính sách pháp lý:** `/chinh-sach-bao-mat`, `/dieu-khoan` và `/bao-mat` đã được biên soạn lại ngày 01/11/2026 theo Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15, Nghị định 356/2025/NĐ-CP, pháp luật khám bệnh/chữa bệnh, dữ liệu y tế, người tiêu dùng, giao dịch điện tử và an ninh/an toàn thông tin đang có hiệu lực. Form lưu phiên bản chính sách và câu đồng ý; nhóm nhu cầu tổng quát được cảnh báo là có thể phản ánh dữ liệu sức khỏe nhạy cảm. Trước khi công bố chính thức vẫn phải bổ sung tên pháp lý của đơn vị vận hành, giấy phép hoạt động, mã số thuế/đăng ký và email phụ trách dữ liệu; xác nhận quy trình xóa tối đa 90 ngày, đầu mối khiếu nại và hồ sơ đánh giá tác động/chuyển dữ liệu xuyên biên giới khi áp dụng.
+
+**Chặn tuân thủ Formspree:** Chính sách quyền riêng tư hiện hành của Formspree yêu cầu khách hàng không dùng dịch vụ để thu thập dữ liệu cá nhân nhạy cảm. Nhóm “Thai kỳ/Hiếm muộn…” gắn với tên và số điện thoại có thể là dữ liệu sức khỏe nhạy cảm theo Nghị định 356/2025/NĐ-CP. Khi `clinic.draft=true`, form hiển thị cảnh báo không gửi dữ liệu thật; endpoint chỉ dùng với dữ liệu kiểm thử. Trước khi công bố phải thay endpoint bằng giải pháp/hợp đồng cho phép xử lý dữ liệu sức khỏe hoặc có xác nhận bằng văn bản phù hợp từ nhà cung cấp. Không chỉ xóa cảnh báo và tiếp tục dùng Formspree.
 
 **Đang chạy:** https://drnguyenclinic.vercel.app — bản xem trước, `noindex`. Vercel project `drnguyenclinic` nối GitHub `phongbao-uopeopleuni/drnguyenclinic`; push lên `main` là tự deploy production (khoảng 10 giây). Quy trình: nhánh riêng → lint/build/test → merge `--no-ff` vào `main` → push → kiểm tra trên production.
 
-**Đã xong:** giao diện và trải nghiệm (bảng màu ngà/hồng phấn/navy, header trong suốt/kính mờ, logo kèm dòng chuyên khoa), nút liên hệ nhanh (Gọi, Zalo; nút Facebook và Hotline làm sẵn, đang ẩn), biểu mẫu "Đăng ký tư vấn" bản xem trước, tăng cường bảo mật (CSP, security header, test), rà soát ECC không còn lỗi Critical/High/Medium (xem `docs/security/REVIEW.md`).
+**Đã xong:** giao diện và trải nghiệm (bảng màu ngà/hồng phấn/navy, header trong suốt/kính mờ, logo kèm dòng chuyên khoa), nút liên hệ nhanh (Gọi, Zalo; nút Facebook và Hotline làm sẵn, đang ẩn), biểu mẫu "Đăng ký tư vấn" gửi qua Formspree, tăng cường bảo mật (CSP, security header, test), rà soát ECC không còn lỗi Critical/High/Medium (xem `docs/security/REVIEW.md`).
 
 **Việc còn lại, theo thứ tự:**
-1. Thông tin từ chủ phòng khám (chi tiết ở `docs/CONTENT-SEO.md`): số hotline (`clinic.hotline`), link Facebook (`clinic.facebook`), xác nhận giờ khám đang hiển thị, tiểu sử và bằng cấp bác sĩ, phạm vi dịch vụ, ảnh thật phòng khám, bài viết đã duyệt, tên miền, chính sách chính thức.
+1. Thông tin từ chủ phòng khám (chi tiết ở `docs/CONTENT-SEO.md`): số hotline (`clinic.hotline`), link Facebook (`clinic.facebook`), xác nhận giờ khám đang hiển thị, tiểu sử và bằng cấp bác sĩ, phạm vi dịch vụ, ảnh thật phòng khám, bài viết đã duyệt, tên miền; tên pháp lý, giấy phép hoạt động, mã số thuế/đăng ký và email phụ trách dữ liệu cho các chính sách pháp lý.
 2. Quyết định thiết kế đang mở: nút gọi ở hero và thẻ ảnh bác sĩ dùng xanh lá `#315C50` (lệch bảng màu navy/hồng); footer rút gọn không còn địa chỉ, điện thoại, giờ khám (nên có cho người dùng và SEO địa phương).
-3. Backend cho biểu mẫu tư vấn: kiểm tra dữ liệu phía server, chống spam/giới hạn tần suất, mở `connect-src`/`form-action` đúng domain ở cả `config/security.mjs` và `vercel.json`, bật `autocomplete`.
+3. Hoàn thiện chống spam cho biểu mẫu tư vấn: tạo Cloudflare Turnstile Site Key cho tên miền, cấu hình Secret Key trong Formspree, tích hợp widget và chỉ mở thêm các Turnstile origin tối thiểu trong CSP. Sau khi có lưu lượng thực tế, theo dõi spam trước khi quyết định có cần endpoint riêng để giới hạn tần suất hay không.
 4. Trước khi công khai: làm theo "Trước khi công khai" trong `docs/CONTENT-SEO.md`. Lưu ý `noindex` nằm ở **hai nơi**: `clinic.draft` và thẻ meta cứng trong `index.html`. Gắn tên miền trong Vercel (Settings → Domains) và đặt `clinic.website`.
 
 **Chưa kiểm chứng trực tiếp:** đoạn tự đóng menu khi màn hình rộng lên ≥1024px (`matchMedia` trong `Header.tsx`), vì khung trình duyệt kiểm thử không vẽ khi bị ẩn. Lớp bảo vệ bằng CSS (style menu mở chỉ áp dụng dưới 1024px) đã kiểm chứng.
@@ -53,11 +59,11 @@ Giữ stack, package.json, package-lock.json và ba file tài sản gốc. Khôn
 - npm run build: đạt.
 - Build với base=/phong-kham/ và outDir=dist-subpath: đạt.
 - Trình duyệt 360px, 768px, 1440px: 11 route kiểm tra không tràn ngang, mỗi route 1 H1.
-- Route kiểm tra: /, /gioi-thieu, /dich-vu, /quy-trinh, /kien-thuc, /faq, /lien-he, /dich-vu/kham-phu-khoa, /kien-thuc/chuan-bi-buoi-kham, /chinh-sach-bao-mat, /dieu-khoan.
+- Route kiểm tra lịch sử: /, /gioi-thieu, /dich-vu, /quy-trinh, /kien-thuc, /faq, /lien-he, /dich-vu/kham-phu-khoa, /kien-thuc/chuan-bi-buoi-kham, /chinh-sach-bao-mat, /dieu-khoan. Route `/bao-mat` được thêm ngày 01/11/2026 và phải được đưa vào lần QA responsive/browser kế tiếp.
 - Xem trực quan desktop và mobile: ảnh bác sĩ giữ đầu/khuôn mặt, logo đúng tỷ lệ; không đảo màu logo.
 - Menu mobile mở/đóng; đóng khi điều hướng; Escape đóng và giữ focus nút.
 - FAQ mở được bằng summary; ô tìm kiếm lọc theo dữ liệu.
-- Form trống không hợp lệ; số điện thoại abc bị chặn; bộ dữ liệu mẫu hợp lệ qua kiểm tra; thông báo không gửi/không xác nhận lịch; 0 yêu cầu mạng mới khi submit và localStorage.length=0.
+- Kiểm chứng lịch sử trước khi kết nối Formspree: form trống không hợp lệ; số điện thoại abc bị chặn; bộ dữ liệu mẫu hợp lệ qua kiểm tra; phiên bản khi đó không gửi dữ liệu. Mục này không còn mô tả hành vi hiện tại; xem trạng thái đầu tài liệu và `docs/design-review/QA-2026-11-01.md`.
 - Gallery rỗng không xuất hiện.
 - Logo, ảnh bác sĩ và favicon trả HTTP 200 với MIME đúng ở /phong-kham/. Ảnh trình duyệt có naturalWidth 1056 (logo), 960 (bác sĩ). Điều hướng /phong-kham/lien-he mở form đúng.
 - Bản sao ba tài sản có SHA256 trùng với gốc.
@@ -161,9 +167,9 @@ Kiểm chứng: 12 route × 320/360/768/1024/1440px không có link tel: trong h
 
 ## UI refinement review
 
-Applied frontend-design-direction and make-interfaces-feel-better: clinical/editorial hero with doctor identity, real portrait and contact facts; numbered care list instead of icon cards; removed repeated slogan blocks and large draft article illustrations; contact preview form collapsed behind a labelled summary. Existing shared working-tree refinements were preserved.
+Ghi nhận lịch sử của lần refinement ban đầu: clinical/editorial hero with doctor identity, real portrait and contact facts; numbered care list instead of icon cards; removed repeated slogan blocks and large draft article illustrations. Mô tả form preview đóng mặc định của thời điểm này đã bị thay thế bởi form Formspree hiển thị trực tiếp; xem trạng thái đầu tài liệu.
 
-Before/after: decorative arch and repeated slogans → factual doctor introduction; card grid → numbered service list; competing preview form → phone/directions first and expandable preview; decorative illustration cards → compact article list.
+Before/after của giao diện nền: decorative arch and repeated slogans → factual doctor introduction; card grid → numbered service list; decorative illustration cards → compact article list. Phần form expandable preview là lịch sử, không phải hợp đồng hiện tại.
 
 Evidence: docs/design-review/CONTRACT.md and evidence.json with rendered browser records at 360x900, 768x900, 1440x1000. Home accessibility 100 and best practices 100 in snapshot audit, SEO 83 with draft noindex retained. TypeScript and build passed. Existing unrelated/concurrent working-tree edits were not reverted.
 

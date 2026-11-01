@@ -1,59 +1,56 @@
 {
-  "contract": "CONTRACT.md — clinical/editorial clinic website; physician, address and call action first; real assets; preserve draft status and routes. Shared working tree also contains concurrent UI refinements; captures describe the rendered state at review time.",
-  "targetViewports": [
-    "360x900",
-    "768x900",
-    "1440x1000"
-  ],
+  "reviewDate": "2026-11-01",
+  "contract": "CONTRACT.md — current Formspree consultation flow with data minimization and explicit appointment confirmation rules.",
+  "sourceState": {
+    "form": "Live Formspree submission",
+    "requiredFields": ["fullName", "phone", "preferredDate", "consultationType", "consent"],
+    "optionalFields": ["area", "note"],
+    "antiSpam": ["Formspree domain restriction", "_gotcha honeypot"],
+    "pending": ["Cloudflare Turnstile"]
+  },
+  "targetViewports": ["360x900", "768x900", "1440x1000"],
+  "automatedChecks": {
+    "typescript": "pass",
+    "productionBuild": "pass",
+    "securityTests": "6/6 pass",
+    "uiStructureTests": "4/4 pass",
+    "checksCovered": [
+      "minimum data fields",
+      "required versus optional controls",
+      "programmatic labels",
+      "accessible submission states",
+      "duplicate-submit guard",
+      "responsive CSS rules for the target widths"
+    ]
+  },
+  "browserAutomation": {
+    "status": "inconclusive",
+    "reason": "The current executor cannot expose its Vite server to the host browser and has no Playwright, Puppeteer or browser MCP. Chrome and Edge headless could not produce a rendered artifact across the sandbox boundary.",
+    "notClaimed": [
+      "current screenshots",
+      "computed horizontal-overflow measurements",
+      "console and network trace",
+      "axe-core result",
+      "keyboard focus-order pass",
+      "Core Web Vitals"
+    ]
+  },
   "accessibility": {
-    "status": "pass",
-    "evidence": "Rendered home Lighthouse snapshot accessibility 100, best practices 100. Mobile menu opened, Escape closed and returned focus; visible solid focus outline. Native FAQ opens. Primary phone targets 51–56px, menu 48px. Reduced-motion stylesheet rule present. Automated audit is not full WCAG certification."
+    "status": "partial-pass",
+    "evidence": "Static tests confirm labels for visible controls, aria-busy, live status/error announcements, native validation and reduced-motion CSS. A real keyboard, screen-reader and axe-core pass remains required."
   },
   "responsive": {
-    "status": "pass",
-    "evidence": "Rendered home at all three exact viewports had scrollWidth <= innerWidth; real portrait loaded at naturalWidth 960. Inspected mobile/tablet and desktop screenshots. Contact form at 360px had no horizontal overflow."
+    "status": "inconclusive",
+    "evidence": "Static tests confirm the intended 1180/1023/639/359px breakpoints, tablet form grid and phone single-column layout. Rendered overflow and visual alignment have not been re-measured after the live-form change."
   },
-  "contentStates": {
-    "loading": {
-      "status": "not-applicable",
-      "reason": "No asynchronous booking flow or loading view; static page and explicit preview form only."
-    },
-    "empty": {
-      "status": "pass",
-      "evidence": "Empty gallery absent. FAQ search with zzzz-no-match displayed no-results text and suggested another keyword."
-    },
-    "error": {
-      "status": "pass",
-      "evidence": "Changed portrait source in isolated browser DOM to invalid data URL; actual image load error displayed fallback text and retained 304.8px frame height. Source files were not changed by this test."
-    },
-    "partial": {
-      "status": "pass",
-      "evidence": "Real name/address/phone displayed; unknown hours and proposed service scope explicitly labelled. Preview form collapsed by default with preview status in summary."
-    },
-    "success": {
-      "status": "pass",
-      "evidence": "Valid preview form explicitly said nothing was sent and no appointment confirmed. Invalid blank form rejected; localStorage remained empty. Background Kaspersky extension XHR observed; not an application booking request."
-    },
-    "permission": {
-      "status": "not-applicable",
-      "reason": "Site requests no geolocation/device permissions and has no authenticated backend actions. External map/call links inspected, no call placed."
-    }
+  "interactionStates": {
+    "loading": "pass-by-code",
+    "invalid": "pass-by-code",
+    "success": "pass-by-code; no live submission was made during QA",
+    "error": "pass-by-code",
+    "empty": "not changed",
+    "permission": "not applicable"
   },
-  "renderedEvidence": [
-    {
-      "viewport": "360x900",
-      "artifact": "render-360.json",
-      "observation": "Browser DOM measurements from exact viewport: no horizontal overflow, heading and photo dimensions, call target dimensions. Screenshots reviewed in tool output."
-    },
-    {
-      "viewport": "768x900",
-      "artifact": "render-768.json",
-      "observation": "Browser DOM measurements from exact viewport: no horizontal overflow, heading and photo dimensions, call target dimensions. Screenshots reviewed in tool output."
-    },
-    {
-      "viewport": "1440x1000",
-      "artifact": "render-1440.json",
-      "observation": "Browser DOM measurements from exact viewport: no horizontal overflow, heading and photo dimensions, call target dimensions. Screenshots reviewed in tool output."
-    }
-  ]
+  "verdict": "INCONCLUSIVE",
+  "verdictReason": "Code, build, security and structural accessibility checks pass, but the required rendered browser evidence is unavailable in this executor."
 }

@@ -97,6 +97,13 @@ tài khoản GitHub hoặc website production. Các sửa đổi UI có sẵn đ
 Không có cấu hình nào bảo đảm tuyệt đối website không bị chèn mã độc.
 Kết quả này giảm bề mặt tấn công và bổ sung các lớp phòng vệ có thể kiểm chứng.
 
+## Cập nhật chính sách công khai — 01/11/2026
+
+- Thêm route `/bao-mat` mô tả đúng các lớp bảo vệ có trong mã nguồn/cấu hình, giới hạn hiện tại, hướng dẫn báo cáo sự cố và nguyên tắc công bố lỗ hổng có trách nhiệm.
+- Viết lại `/chinh-sach-bao-mat` và `/dieu-khoan`; nêu rõ Formspree, Vercel, Google Fonts, khả năng chuyển dữ liệu xuyên biên giới, quyền chủ thể dữ liệu và thời hạn xử lý theo Nghị định 356/2025/NĐ-CP.
+- Form ghi nhận phiên bản chính sách 1.0 ngày 01/11/2026 và câu đồng ý cụ thể. Nhóm nhu cầu tư vấn được coi là có thể phản ánh dữ liệu sức khỏe nhạy cảm.
+- Đây là nội dung công khai hỗ trợ minh bạch, không thay thế công việc vận hành: vẫn cần xác nhận chủ thể pháp lý, email phụ trách dữ liệu, phân quyền hộp thư/Formspree, quy trình xóa trong 90 ngày và hồ sơ đánh giá tác động khi pháp luật yêu cầu.
+
 ## Rà soát ECC — 21/10/2026
 
 Công cụ: skill `ecc:security-review` (checklist), agent `ecc:security-reviewer` (bảo mật) và `ecc:react-reviewer` (bug React), cùng kiểm tra trực tiếp production https://drnguyenclinic.vercel.app.
@@ -126,4 +133,4 @@ Debug bản build:
 - Build đường dẫn con `/phong-kham/` (`MSYS_NO_PATHCONV=1` khi chạy trong Git Bash): trang con, ảnh `?v=`, logo, link nội bộ và `#tu-van` đều đúng, console sạch.
 
 Ghi nhận, có chủ ý:
-- Biểu mẫu tư vấn chỉ kiểm tra phía trình duyệt và `autoComplete="off"` cho bản xem trước. Khi nối backend: kiểm tra lại dữ liệu phía server, giới hạn tần suất, mở `connect-src`/`form-action` đúng domain, bật `autocomplete` (name, street-address, tel).
+- Biểu mẫu tư vấn gửi tới Formspree bằng `fetch`, dùng native validation và `autocomplete` phù hợp; CSP chỉ cho phép `connect-src`/`form-action` tới `https://formspree.io`. Form có honeypot `_gotcha`, khóa gửi lặp và không lưu dữ liệu vào Web Storage. Cloudflare Turnstile và giới hạn tần suất riêng vẫn chưa có; chỉ tích hợp Turnstile sau khi có Site Key và cấu hình Secret Key trong Formspree.

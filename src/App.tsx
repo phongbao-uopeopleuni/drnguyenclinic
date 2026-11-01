@@ -11,6 +11,7 @@ import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import Security from './pages/Security';
 import NotFound from './pages/NotFound';
 import { decodeFragment } from './utils/fragment.mjs';
 function ScrollToTop() {
@@ -32,6 +33,6 @@ function ScrollToTop() {
 }
 export default function App() {
 return <BrowserRouter basename={import.meta.env.BASE_URL}><ScrollToTop /><Header /><main id="main" tabIndex={-1} className="page-content"><Routes>
-<Route path="/" element={<Home />} /><Route path="/gioi-thieu" element={<About />} /><Route path="/dich-vu" element={<Services />} /><Route path="/dich-vu/:slug" element={<Services />} /><Route path="/quy-trinh" element={<Process />} /><Route path="/kien-thuc" element={<Blog />} /><Route path="/kien-thuc/:slug" element={<Blog />} /><Route path="/faq" element={<FAQ />} /><Route path="/lien-he" element={<Contact />} /><Route path="/chinh-sach-bao-mat" element={<Privacy />} /><Route path="/dieu-khoan" element={<Terms />} /><Route path="/huong-dan-di-kham" element={<Navigate to="/faq" replace />} /><Route path="*" element={<NotFound />} />
+<Route path="/" element={<Home />} /><Route path="/gioi-thieu" element={<About />} /><Route path="/dich-vu" element={<Services />} /><Route path="/dich-vu/:slug" element={<Services />} /><Route path="/quy-trinh" element={<Process />} /><Route path="/kien-thuc" element={<Blog />} /><Route path="/kien-thuc/:slug" element={<Blog />} /><Route path="/faq" element={<FAQ />} /><Route path="/lien-he" element={<Contact />} /><Route path="/chinh-sach-bao-mat" element={<Privacy />} /><Route path="/dieu-khoan" element={<Terms />} /><Route path="/bao-mat" element={<Security />} /><Route path="/huong-dan-di-kham" element={<Navigate to="/faq" replace />} /><Route path="*" element={<NotFound />} />
 </Routes></main><Footer /></BrowserRouter>;
 }

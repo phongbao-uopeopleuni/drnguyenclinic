@@ -34,7 +34,7 @@ Website không cần Gemini API key. Cấu hình Vite không đưa khóa API và
 Dịch vụ chưa xác nhận có nhãn dự kiến. Đề cương bài viết có nhãn bản nháp, chưa được bác sĩ duyệt.
 Biểu mẫu chỉ kiểm tra dữ liệu; không gọi API, không lưu localStorage, không giả lập lịch thành công.
 Không có backend, analytics, bản đồ nhúng, địa chỉ/điện thoại giả, đánh giá hoặc cam kết kết quả điều trị.
-Google Fonts là kết nối ngoài để tải font; ảnh/logo phục vụ tại website.
+Font Be Vietnam Pro và Lora được tự lưu trữ qua gói `@fontsource` (nạp trong `src/main.tsx`, trình duyệt chỉ tải phần Latin và tiếng Việt); không kết nối máy chủ font bên ngoài. Ảnh/logo phục vụ tại website.
 Không thêm manifest/icon khác nếu chưa có tài sản thật.
 
 ## Đường dẫn con và hosting
