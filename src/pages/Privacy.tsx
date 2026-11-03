@@ -41,7 +41,7 @@ export default function Privacy() {
         <ul>
           <li><strong>Thông tin liên hệ:</strong> họ và tên, số điện thoại.</li>
           <li><strong>Thông tin đặt lịch:</strong> ngày hẹn mong muốn và nhóm nhu cầu tổng quát như khám phụ khoa, thai kỳ, sức khỏe sinh sản, hiếm muộn hoặc nhu cầu khác.</li>
-          <li><strong>Thông tin không bắt buộc:</strong> phường/xã và ghi chú ngắn do khách hàng tự nguyện cung cấp.</li>
+          <li><strong>Thông tin không bắt buộc:</strong> ghi chú ngắn do khách hàng tự nguyện cung cấp.</li>
           <li><strong>Thông tin về yêu cầu:</strong> thời điểm gửi, nội dung trao đổi cần thiết và trạng thái xử lý yêu cầu.</li>
         </ul>
         <h3>2.2. Dữ liệu có tính chất nhạy cảm</h3>

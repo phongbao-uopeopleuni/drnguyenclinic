@@ -16,6 +16,6 @@ export default function Footer() {
         </nav>
       </div>
     </div>
-    <div className="footer-bottom"><span>© {new Date().getFullYear()} {clinic.brandName}</span><nav aria-label="Thông tin hỗ trợ"><Link to="/faq">Câu hỏi thường gặp</Link></nav></div>
+    <div className="footer-bottom"><span>© {new Date().getFullYear()} {clinic.policyName}</span><nav aria-label="Thông tin hỗ trợ"><Link to="/faq">Câu hỏi thường gặp</Link></nav></div>
   </div></footer>;
 }

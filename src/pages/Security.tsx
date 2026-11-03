@@ -25,7 +25,7 @@ export default function Security() {
         </ul>
 
         <h2>3. Thông tin được tiếp nhận</h2>
-        <p>Biểu mẫu chỉ yêu cầu họ tên, số điện thoại, ngày hẹn và nhóm nhu cầu tổng quát; phường/xã và ghi chú ngắn là không bắt buộc. Nhóm nhu cầu có thể gián tiếp phản ánh tình trạng sức khỏe nên được bảo vệ ở mức thận trọng phù hợp. Khách hàng không nên nhập bệnh án, kết quả xét nghiệm, hình ảnh y khoa, chẩn đoán, đơn thuốc, số căn cước hoặc dữ liệu thanh toán.</p>
+        <p>Biểu mẫu chỉ yêu cầu họ tên, số điện thoại, ngày hẹn và nhóm nhu cầu tổng quát; ghi chú ngắn là không bắt buộc. Nhóm nhu cầu có thể gián tiếp phản ánh tình trạng sức khỏe nên được bảo vệ ở mức thận trọng phù hợp. Khách hàng không nên nhập bệnh án, kết quả xét nghiệm, hình ảnh y khoa, chẩn đoán, đơn thuốc, số căn cước hoặc dữ liệu thanh toán.</p>
 
         <h2>4. Biện pháp bảo vệ</h2>
         <div className="legal-data-list security-controls">
