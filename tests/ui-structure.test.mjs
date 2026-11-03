@@ -27,7 +27,7 @@ test('consultation form collects only the required minimum', () => {
   assert.match(contact, /privacyPolicyDate/);
   assert.doesNotMatch(contact, /phiên bản 1\.0|quyền riêng tư 1\.0/i);
   assert.match(contact, /không nhằm mục đích chẩn đoán, điều trị trực tuyến hoặc thay thế việc thăm khám/i);
-  assert.match(contact, /dữ liệu sức khỏe nhạy cảm/);
+  assert.doesNotMatch(contact, /Bản thử nghiệm|Nhóm nhu cầu bạn chọn có thể phản ánh dữ liệu sức khỏe nhạy cảm/);
 });
 
 test('legal pages and the security route remain wired into the application', () => {
