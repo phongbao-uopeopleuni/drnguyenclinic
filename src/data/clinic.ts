@@ -1,6 +1,7 @@
 export const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
 export const clinic = {
   name: 'Phòng khám Hiếm muộn & Sản phụ khoa tại Huế', displayName: 'Phòng khám Hiếm muộn & Sản phụ khoa tại Huế',
+  policyName: 'Phòng khám Hiếm muộn & Sản phụ khoa TS. BS Nguyễn Đắc Nguyên',
   // Wordmark printed in the logo artwork and the specialty line set beside it.
   brandName: 'Phòng khám TS.BS. Đắc Nguyên', specialty: 'Hiếm muộn & Sản Phụ Khoa',
   doctor: 'TS.BS. Nguyễn Đắc Nguyên', doctorFull: 'Tiến sĩ, Bác sĩ Nguyễn Đắc Nguyên', draft: true,

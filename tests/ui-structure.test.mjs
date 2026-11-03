@@ -39,7 +39,7 @@ test('legal pages and the security route remain wired into the application', () 
   const terms = readFileSync('src/pages/Terms.tsx', 'utf8');
   const security = readFileSync('src/pages/Security.tsx', 'utf8');
 
-  for (const route of ['/chinh-sach-bao-mat', '/dieu-khoan', '/bao-mat']) {
+  for (const route of ['/chinh-sach-bao-mat-thong-tin', '/chinh-sach-bao-ve-du-lieu-ca-nhan', '/quy-dinh-su-dung-website']) {
     assert.ok(app.includes(`path="${route}"`), `Missing route ${route}`);
     assert.ok(footer.includes(`to="${route}"`), `Missing footer link ${route}`);
   }

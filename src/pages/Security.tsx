@@ -5,82 +5,61 @@ import { clinic, phoneUrl } from '../data/clinic';
 
 export default function Security() {
   return <>
-    <SEO
-      title="Bảo mật website"
-      description={`Biện pháp bảo mật, hướng dẫn sử dụng an toàn và quy trình báo cáo lỗ hổng của website ${clinic.brandName}.`}
-      noindex
-    />
-    <PageHeading
-      label="An toàn thông tin"
-      title="Bảo mật website"
-      description="Các lớp bảo vệ đang áp dụng, giới hạn của hệ thống và cách báo cáo sự cố hoặc lỗ hổng một cách có trách nhiệm."
-    />
+    <SEO title="Chính sách bảo mật thông tin" description={`Nguyên tắc bảo mật thông tin khi sử dụng website của ${clinic.policyName}.`} noindex />
+    <PageHeading label="Dành cho khách hàng" title="Chính sách bảo mật thông tin" description="Cam kết và nguyên tắc bảo vệ thông tin khách hàng trong quá trình truy cập website, liên hệ và gửi yêu cầu đặt lịch." />
     <section className="section container">
       <article className="narrow prose legal-document">
-        <div className="legal-meta" aria-label="Thông tin phiên bản chính sách bảo mật">
-          <span>Cập nhật: <time dateTime="2026-11-01">01/11/2026</time></span>
-        </div>
-        <p className="notice">Trang này giới thiệu các nguyên tắc bảo vệ thông tin và hướng dẫn sử dụng website an toàn. Không có biện pháp nào loại bỏ hoàn toàn rủi ro; hồ sơ bệnh án, nếu phát sinh trong quá trình khám chữa bệnh, được bảo vệ theo quy trình riêng của cơ sở y tế.</p>
+        <div className="legal-meta" aria-label="Ngày cập nhật chính sách"><span>Cập nhật: <time dateTime="2026-11-03">03/11/2026</time></span></div>
+        <p className="notice">Chính sách này trình bày cách <strong>{clinic.policyName}</strong> bảo vệ thông tin trong phạm vi website và biểu mẫu đặt lịch. Quyền của khách hàng đối với dữ liệu cá nhân được trình bày riêng tại <Link to="/chinh-sach-bao-ve-du-lieu-ca-nhan">Chính sách bảo vệ dữ liệu cá nhân</Link>.</p>
 
-        <h2>1. Phạm vi</h2>
-        <p>Chính sách áp dụng cho website và biểu mẫu tư vấn. Website hiện không có tài khoản người dùng, thanh toán trực tuyến, tải tệp, cổng hồ sơ bệnh án hoặc chức năng xem kết quả xét nghiệm.</p>
+        <h2>1. Phạm vi áp dụng</h2>
+        <p>Chính sách áp dụng cho thông tin khách hàng chủ động cung cấp qua biểu mẫu đặt lịch, các cuộc liên hệ phát sinh từ yêu cầu đó và dữ liệu kỹ thuật tối thiểu cần thiết để website vận hành an toàn. Website không phải cổng hồ sơ bệnh án, không có chức năng xem kết quả xét nghiệm, thanh toán trực tuyến hoặc chẩn đoán và điều trị trực tuyến.</p>
 
-        <h2>2. Các biện pháp đang áp dụng</h2>
+        <h2>2. Nguyên tắc bảo mật</h2>
+        <ul>
+          <li>Chỉ thu thập thông tin cần thiết cho mục đích liên hệ và sắp xếp lịch hẹn.</li>
+          <li>Chỉ người có nhiệm vụ phù hợp mới được tiếp cận thông tin theo nguyên tắc cần biết.</li>
+          <li>Không bán, cho thuê hoặc dùng thông tin đặt lịch cho quảng cáo khi chưa có sự đồng ý riêng.</li>
+          <li>Không yêu cầu khách hàng cung cấp mật khẩu, mã xác thực, dữ liệu tài chính hoặc hồ sơ sức khỏe chi tiết qua biểu mẫu.</li>
+          <li>Duy trì biện pháp phòng ngừa, phát hiện, ứng phó và khắc phục tương xứng với rủi ro.</li>
+        </ul>
+
+        <h2>3. Thông tin được tiếp nhận</h2>
+        <p>Biểu mẫu chỉ yêu cầu họ tên, số điện thoại, ngày hẹn và nhóm nhu cầu tổng quát; phường/xã và ghi chú ngắn là không bắt buộc. Nhóm nhu cầu có thể gián tiếp phản ánh tình trạng sức khỏe nên được bảo vệ ở mức thận trọng phù hợp. Khách hàng không nên nhập bệnh án, kết quả xét nghiệm, hình ảnh y khoa, chẩn đoán, đơn thuốc, số căn cước hoặc dữ liệu thanh toán.</p>
+
+        <h2>4. Biện pháp bảo vệ</h2>
         <div className="legal-data-list security-controls">
-          <div><strong>Giảm thiểu dữ liệu</strong><span>Biểu mẫu chỉ yêu cầu thông tin liên hệ, ngày mong muốn và nhu cầu tổng quát; khu vực và ghi chú là tùy chọn.</span></div>
-          <div><strong>Bảo vệ kết nối</strong><span>Thông tin được truyền qua kết nối mã hóa và chỉ đến địa chỉ tiếp nhận đã được cấu hình.</span></div>
-          <div><strong>Giới hạn chức năng</strong><span>Website không yêu cầu quyền truy cập camera, microphone, vị trí, thanh toán hoặc thiết bị ngoại vi.</span></div>
-          <div><strong>Bảo vệ biểu mẫu</strong><span>Thông tin nhập vào được kiểm tra, giới hạn độ dài và có biện pháp giảm gửi tự động hoặc gửi lặp.</span></div>
-          <div><strong>Hạn chế theo dõi</strong><span>Không có công cụ quảng cáo hoặc phân tích hành vi; nội dung biểu mẫu không được lưu thành bản sao trên thiết bị của bạn.</span></div>
-          <div><strong>Rà soát định kỳ</strong><span>Các biện pháp bảo vệ và thành phần công khai được kiểm tra trước khi cập nhật website.</span></div>
+          <div><strong>Giảm thiểu dữ liệu</strong><span>Giới hạn trường thông tin, nội dung và độ dài phù hợp với mục đích đặt lịch.</span></div>
+          <div><strong>Bảo vệ khi truyền tải</strong><span>Sử dụng kết nối an toàn và các biện pháp thích hợp nhằm giảm nguy cơ nghe lén hoặc sửa đổi dữ liệu.</span></div>
+          <div><strong>Kiểm soát truy cập</strong><span>Phân quyền theo nhiệm vụ, hạn chế chia sẻ và rà soát quyền tiếp cận định kỳ.</span></div>
+          <div><strong>Phòng chống lạm dụng</strong><span>Kiểm tra dữ liệu đầu vào, giới hạn yêu cầu bất thường và theo dõi dấu hiệu spam hoặc truy cập trái phép.</span></div>
+          <div><strong>Quản lý vòng đời</strong><span>Giữ thông tin trong thời gian cần thiết, sau đó xóa, hủy hoặc ẩn danh theo quy định.</span></div>
+          <div><strong>Ứng phó sự cố</strong><span>Ghi nhận, đánh giá, cô lập, khắc phục và thông báo khi sự cố thuộc trường hợp pháp luật yêu cầu.</span></div>
         </div>
+        <p>Các biện pháp bảo vệ được rà soát khi website, phạm vi dịch vụ hoặc mức độ rủi ro thay đổi. Vì lý do an toàn, Phòng khám không công bố chi tiết có thể làm suy yếu khả năng bảo vệ hệ thống.</p>
 
-        <h2>3. Trách nhiệm chung với nhà cung cấp</h2>
-        <p>Một số đơn vị có thể hỗ trợ vận hành website và tiếp nhận yêu cầu. Phòng khám vẫn phải quản lý quyền truy cập, thời hạn xóa, thỏa thuận xử lý dữ liệu và đánh giá việc chuyển dữ liệu xuyên biên giới; việc thuê đơn vị hỗ trợ không làm giảm trách nhiệm tuân thủ pháp luật Việt Nam.</p>
+        <h2>5. Tiếp cận và cung cấp thông tin</h2>
+        <p>Thông tin chỉ được cung cấp cho người được Phòng khám phân công, đơn vị hỗ trợ cần thiết để vận hành dịch vụ hoặc cơ quan có thẩm quyền theo yêu cầu hợp pháp. Các bên hỗ trợ phải bảo mật, chỉ xử lý theo phạm vi được giao và không được tự sử dụng thông tin cho mục đích riêng.</p>
 
-        <h2>4. Hạn chế và việc còn phải hoàn thiện</h2>
+        <h2>6. Trách nhiệm của khách hàng</h2>
         <ul>
-          <li>Nhóm nhu cầu tư vấn có thể phản ánh dữ liệu sức khỏe; trước khi công bố chính thức, phòng khám phải bảo đảm mọi bên tham gia xử lý đều được phép tiếp nhận loại dữ liệu này và có thỏa thuận phù hợp.</li>
-          <li>Các biện pháp chống gửi tự động hiện tại không thể ngăn chặn mọi hành vi lạm dụng.</li>
-          <li>Phòng khám cần duy trì quy trình phân quyền, xóa dữ liệu và rà soát định kỳ đối với các bản thông báo đã tiếp nhận.</li>
-          <li>Tài khoản quản trị, tên miền và hộp thư liên hệ cần được bảo vệ bằng xác thực nhiều lớp, quyền truy cập tối thiểu và phương án khôi phục.</li>
-          <li>Các biện pháp hiện tại không thay thế kiểm thử bảo mật độc lập hoặc chứng nhận tuân thủ.</li>
+          <li>Kiểm tra đúng địa chỉ website trước khi nhập thông tin.</li>
+          <li>Chỉ cung cấp thông tin cần thiết, chính xác và thuộc quyền cung cấp của mình.</li>
+          <li>Không gửi mật khẩu, mã xác thực, thông tin tài chính hoặc hồ sơ sức khỏe chi tiết.</li>
+          <li>Không thực hiện hành vi dò quét, gây quá tải, chèn mã độc, vượt biện pháp bảo vệ hoặc truy cập trái phép.</li>
+          <li>Liên hệ trực tiếp với Phòng khám nếu nghi ngờ giả mạo hoặc phát hiện thông tin bị sử dụng sai mục đích.</li>
         </ul>
 
-        <h2>5. Hướng dẫn sử dụng an toàn</h2>
-        <ul>
-          <li>Kiểm tra đúng tên miền và biểu tượng HTTPS trước khi nhập thông tin.</li>
-          <li>Không gửi bệnh án, kết quả xét nghiệm, ảnh y khoa, số căn cước, dữ liệu tài chính hoặc mật khẩu qua biểu mẫu.</li>
-          <li>Không tin vào yêu cầu chuyển tiền, cung cấp mã OTP hoặc mật khẩu dưới danh nghĩa phòng khám qua website.</li>
-          <li>Nếu nghi ngờ giả mạo, hãy dừng thao tác và gọi trực tiếp <a href={phoneUrl}>{clinic.phoneDisplay}</a>.</li>
-        </ul>
+        <h2>7. Tiếp nhận thông báo về sự cố</h2>
+        <p>Nếu phát hiện dấu hiệu giả mạo, nội dung bất thường, lỗ hổng hoặc nguy cơ lộ thông tin, vui lòng gọi <a href={phoneUrl}>{clinic.phoneDisplay}</a> hoặc gửi thông tin qua <Link to="/lien-he">trang Liên hệ</Link>. Nội dung thông báo nên gồm địa chỉ trang, thời điểm, mô tả ngắn và ảnh chụp đã che dữ liệu cá nhân. Không truy cập, sao chép, sửa đổi hoặc công bố dữ liệu của người khác để chứng minh sự cố.</p>
+        <p>Phòng khám sẽ xác minh, hạn chế tác động và phối hợp xử lý trong thời gian hợp lý; đồng thời thực hiện nghĩa vụ thông báo theo Luật An ninh mạng số 24/2018/QH14, Luật An ninh mạng số 116/2025/QH15, Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 và quy định liên quan.</p>
 
-        <h2>6. Báo cáo lỗ hổng hoặc sự cố</h2>
-        <p>Nếu phát hiện lỗ hổng, hành vi giả mạo, trang bị sửa đổi bất thường hoặc dữ liệu bị lộ, vui lòng gọi <a href={phoneUrl}>{clinic.phoneDisplay}</a> hoặc gửi thông tin qua <Link to="/lien-he">trang Liên hệ</Link>. Chỉ cung cấp URL, thời điểm, mô tả, bước tái hiện tối thiểu và ảnh chụp đã che dữ liệu cá nhân. Không gửi dữ liệu sức khỏe hoặc tải lên dữ liệu của người khác để chứng minh.</p>
-        <p>Phòng khám sẽ ghi nhận, phân loại mức độ, cô lập rủi ro, phối hợp nhà cung cấp, khắc phục và thông báo theo quy định. Thời gian xử lý phụ thuộc mức độ và khả năng tái hiện; báo cáo hợp lệ sẽ được xác nhận trong thời gian hợp lý.</p>
+        <h2>8. Giới hạn hợp lý</h2>
+        <p>Không biện pháp truyền hoặc lưu trữ nào bảo đảm an toàn tuyệt đối. Phòng khám cam kết áp dụng biện pháp phù hợp và có trách nhiệm nhưng không thể loại trừ mọi rủi ro phát sinh từ thiết bị của khách hàng, hành vi lừa đảo, sự kiện bất khả kháng hoặc hành vi trái pháp luật của bên thứ ba. Nội dung này không loại trừ trách nhiệm mà pháp luật không cho phép loại trừ.</p>
 
-        <h2>7. Nguyên tắc công bố có trách nhiệm</h2>
-        <p>Để việc kiểm tra được xem là thiện chí, người báo cáo không được:</p>
-        <ul>
-          <li>truy cập, sao chép, sửa, xóa hoặc công bố dữ liệu cá nhân;</li>
-          <li>thực hiện tấn công từ chối dịch vụ, spam, dò mật khẩu, lừa đảo hoặc kỹ nghệ xã hội;</li>
-          <li>cài mã độc, duy trì truy cập, thay đổi nội dung hoặc làm gián đoạn hoạt động;</li>
-          <li>tiếp tục khai thác sau khi đã chứng minh được lỗ hổng ở mức tối thiểu;</li>
-          <li>công bố chi tiết trước khi phòng khám có thời gian hợp lý để xác minh và khắc phục.</li>
-        </ul>
-        <p>Chính sách này không cấp quyền thực hiện hành vi bị pháp luật cấm và không phải cam kết miễn trừ trách nhiệm. Nếu cần kiểm thử vượt quá quan sát thụ động, phải có sự chấp thuận trước bằng văn bản của chủ hệ thống.</p>
-
-        <h2>8. Ứng phó sự cố dữ liệu</h2>
-        <p>Khi có dấu hiệu vi phạm dữ liệu cá nhân, đơn vị vận hành cần bảo toàn bằng chứng, hạn chế truy cập, đánh giá loại dữ liệu và chủ thể bị ảnh hưởng, khắc phục nguyên nhân, ghi nhận quyết định và thực hiện nghĩa vụ báo cáo/thông báo theo Luật Bảo vệ dữ liệu cá nhân, Nghị định 356/2025/NĐ-CP và pháp luật chuyên ngành. Dữ liệu sức khỏe phải được coi là dữ liệu nhạy cảm và áp dụng phân quyền, quy trình, biện pháp bảo mật chặt chẽ.</p>
-
-        <h2>9. Căn cứ và tài liệu liên quan</h2>
-        <ul className="legal-sources">
-          <li><a href="https://vanban.chinhphu.vn/?classid=1&docid=214590&pageid=27160&typegroup=" target="_blank" rel="noopener noreferrer">Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15<span className="sr-only"> (mở tab mới)</span></a>.</li>
-          <li><a href="https://vanban.chinhphu.vn/?classid=1&docid=216387&pageid=27160" target="_blank" rel="noopener noreferrer">Nghị định 356/2025/NĐ-CP<span className="sr-only"> (mở tab mới)</span></a>.</li>
-          <li><a href="https://vanban.chinhphu.vn/?classid=&docid=216499&pageid=27160" target="_blank" rel="noopener noreferrer">Luật An ninh mạng số 116/2025/QH15<span className="sr-only"> (mở tab mới)</span></a> — hiệu lực từ 01/07/2026.</li>
-          <li><a href="https://vanban.chinhphu.vn/?docid=183196&pageid=27160" target="_blank" rel="noopener noreferrer">Luật An toàn thông tin mạng số 86/2015/QH13<span className="sr-only"> (mở tab mới)</span></a>.</li>
-          <li><Link to="/chinh-sach-bao-mat">Chính sách quyền riêng tư</Link> và <Link to="/dieu-khoan">Điều khoản sử dụng</Link>.</li>
-        </ul>
+        <h2>9. Cập nhật và liên hệ</h2>
+        <p>Chính sách được cập nhật khi có thay đổi về phạm vi hoạt động, biện pháp bảo vệ hoặc pháp luật. Bản có hiệu lực được công bố tại trang này kèm ngày cập nhật. Mọi câu hỏi được tiếp nhận qua số <a href={phoneUrl}>{clinic.phoneDisplay}</a>, tại {clinic.address}, hoặc qua <Link to="/lien-he">trang Liên hệ</Link>.</p>
+        <p>Xem thêm <Link to="/chinh-sach-bao-ve-du-lieu-ca-nhan">Chính sách bảo vệ dữ liệu cá nhân</Link> và <Link to="/quy-dinh-su-dung-website">Quy định sử dụng website</Link>.</p>
       </article>
     </section>
   </>;
