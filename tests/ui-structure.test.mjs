@@ -26,7 +26,9 @@ test('consultation form collects only the required minimum', () => {
     assert.ok(contact.includes(`<option value="${value}">${value}</option>`), `Missing consultation option: ${value}`);
   }
   assert.match(contact, /Không nhập bệnh án, kết quả xét nghiệm hoặc thông tin sức khỏe chi tiết/);
-  assert.match(contact, /privacyPolicyVersion/);
+  assert.match(contact, /privacyPolicyDate/);
+  assert.doesNotMatch(contact, /phiên bản 1\.0|quyền riêng tư 1\.0/i);
+  assert.match(contact, /không nhằm mục đích chẩn đoán, điều trị trực tuyến hoặc thay thế việc thăm khám/i);
   assert.match(contact, /dữ liệu sức khỏe nhạy cảm/);
 });
 
