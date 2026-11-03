@@ -97,7 +97,7 @@ export default function Contact() {
           <p className="field-hint required-note">Các trường có dấu * là bắt buộc.</p>
 
           <input type="hidden" name="_subject" value="Yêu cầu tư vấn mới từ website phòng khám" />
-          <input type="hidden" name="privacyPolicyDate" value="01/11/2026" />
+          <input type="hidden" name="privacyPolicyDate" value="03/11/2026" />
           <div className="form-honeypot" aria-hidden="true">
             <label htmlFor="consultation-website">Nếu bạn là người dùng, hãy để trống trường này</label>
             <input id="consultation-website" name="_gotcha" type="text" tabIndex={-1} autoComplete="off" />
@@ -139,8 +139,8 @@ export default function Contact() {
             <p id="note-hint" className="field-hint">Không nhập bệnh án, kết quả xét nghiệm hoặc thông tin sức khỏe chi tiết. Tối đa 500 ký tự.</p>
           </div>
           <label className="consent">
-            <input type="checkbox" required name="consent" value="Đồng ý xử lý thông tin để phòng khám liên hệ tư vấn theo Chính sách quyền riêng tư" />
-            <span>Tôi đã đọc <Link to="/chinh-sach-bao-mat">Chính sách quyền riêng tư</Link> và đồng ý để phòng khám xử lý thông tin đã cung cấp. Thông tin này không nhằm mục đích chẩn đoán, điều trị trực tuyến hoặc thay thế việc thăm khám; chỉ giúp phòng khám liên hệ, trao đổi nhu cầu và xác nhận lịch tư vấn hoặc thăm khám với tôi.</span>
+            <input type="checkbox" required name="consent" value="Đồng ý xử lý thông tin để phòng khám liên hệ và sắp xếp lịch theo Chính sách bảo vệ dữ liệu cá nhân" />
+            <span>Tôi đã đọc <Link to="/chinh-sach-bao-ve-du-lieu-ca-nhan">Chính sách bảo vệ dữ liệu cá nhân</Link> và đồng ý để phòng khám xử lý thông tin đã cung cấp. Thông tin này không nhằm mục đích chẩn đoán, điều trị trực tuyến hoặc thay thế việc thăm khám; chỉ giúp phòng khám liên hệ, trao đổi nhu cầu và xác nhận lịch tư vấn hoặc thăm khám với tôi.</span>
           </label>
           <button className="button" type="submit" disabled={submitState === 'submitting'}>
             {submitState === 'submitting' ? 'Đang gửi…' : 'Gửi đăng ký tư vấn'} <ArrowRight size={18} aria-hidden="true" />

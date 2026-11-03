@@ -447,7 +447,9 @@ main { margin-top: calc(-1 * var(--header-h)); }
   .consultation-corner h2 { font-size: 21px; }
 }
 
-.footer-summary { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
-.footer-help { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.footer-summary { display: flex; align-items: flex-start; justify-content: space-between; gap: 42px; }
+.footer-customer { min-width: min(100%, 360px); }
+.footer-customer-title { margin: 0 0 8px; color: #9dc4e5; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.footer-help { display: grid; gap: 0; }
 .footer-help a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
-@media (max-width: 639px) { .footer-summary { flex-direction: column; align-items: flex-start; gap: 20px; } }
+@media (max-width: 639px) { .footer-summary { flex-direction: column; align-items: flex-start; gap: 28px; } }
