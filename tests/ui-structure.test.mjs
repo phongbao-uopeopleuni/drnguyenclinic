@@ -103,6 +103,8 @@ test('call actions and maternal background motifs remain present and motion-safe
   assert.match(css, /prefers-reduced-motion:reduce/);
   assert.match(css, /maternal-embrace\.svg/);
   assert.match(css, /heart-orbit\.svg/);
+  assert.match(css, /\.hero-portrait::before/);
+  assert.doesNotMatch(css, /\.hero::after\s*\{/);
 });
 
 test('footer groups customer help and centers the clinic copyright', () => {
