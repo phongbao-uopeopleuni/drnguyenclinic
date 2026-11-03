@@ -107,11 +107,6 @@ export default function Contact() {
             <label htmlFor="full-name">Họ và tên *</label>
             <input id="full-name" name="fullName" autoComplete="name" required minLength={2} maxLength={80} pattern=".*\S.*" placeholder="Nhập họ và tên của bạn" />
           </div>
-          <div className="field">
-            <label htmlFor="area">Khu vực/phường, xã (không bắt buộc)</label>
-            <input id="area" name="area" autoComplete="address-level3" maxLength={100} placeholder="Ví dụ: phường Mỹ Thượng" aria-describedby="area-hint" />
-            <p id="area-hint" className="field-hint">Chỉ cung cấp khu vực nếu bạn muốn; không cần ghi địa chỉ nhà cụ thể.</p>
-          </div>
           <div className="consultation-row">
             <div className="field">
               <label htmlFor="phone">Số điện thoại *</label>

@@ -12,12 +12,10 @@ function openingTag(element, id) {
 }
 
 test('consultation form collects only the required minimum', () => {
-  const area = openingTag('input', 'area');
   const consultationType = openingTag('select', 'consultation-type');
   const note = openingTag('textarea', 'note');
 
-  assert.doesNotMatch(area, /\srequired(?:\s|=|>)/);
-  assert.match(area, /name="area"/);
+  assert.doesNotMatch(contact, /id="area"|name="area"|Khu vực\/phường, xã/);
   assert.match(consultationType, /\srequired(?:\s|=|>)/);
   assert.doesNotMatch(note, /\srequired(?:\s|=|>)/);
   assert.match(note, /maxLength=\{500\}/);
@@ -68,7 +66,7 @@ test('public policy and contact copy stays vendor-neutral', () => {
 test('every visible form control has a programmatic label', () => {
   const controls = [...contact.matchAll(/<(?:input|select|textarea)\b[^>]*\bid="([^"]+)"[^>]*>/g)]
     .map(match => match[1]);
-  assert.ok(controls.length >= 7);
+  assert.ok(controls.length >= 6);
   for (const id of controls) {
     assert.match(contact, new RegExp(`<label\\b[^>]*htmlFor="${id}"`), `Missing label for #${id}`);
   }
