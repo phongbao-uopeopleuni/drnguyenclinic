@@ -90,3 +90,17 @@ test('responsive rules cover the review breakpoints without hiding the form', ()
   assert.match(css, /\.contact-grid, \.about-grid \{ gap: 40px; \}/);
   assert.match(css, /\.about-grid, \.contact-grid \{ grid-template-columns: 1fr;/);
 });
+
+test('call actions and maternal background motifs remain present and motion-safe', () => {
+  const contactActions = readFileSync('src/components/ContactActions.tsx', 'utf8');
+  const quickContact = readFileSync('src/components/QuickContact.tsx', 'utf8');
+
+  assert.match(contactActions, /call-cta/);
+  assert.match(quickContact, /float-call call-cta/);
+  assert.match(quickContact, /mobile-call call-cta/);
+  assert.match(css, /@keyframes call-invitation/);
+  assert.match(css, /@keyframes call-icon-nudge/);
+  assert.match(css, /prefers-reduced-motion:reduce/);
+  assert.match(css, /maternal-embrace\.svg/);
+  assert.match(css, /heart-orbit\.svg/);
+});

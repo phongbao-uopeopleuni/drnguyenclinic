@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" fill="none">
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="360" cy="360" rx="272" ry="164" transform="rotate(-24 360 360)" stroke="#B79B73" stroke-opacity=".38" stroke-width="1.4"/>
+    <ellipse cx="360" cy="360" rx="238" ry="126" transform="rotate(34 360 360)" stroke="#D4A09A" stroke-opacity=".48" stroke-width="1.5"/>
+    <ellipse cx="360" cy="360" rx="126" ry="250" transform="rotate(8 360 360)" stroke="#1E3A5F" stroke-opacity=".2" stroke-width="1.2" stroke-dasharray="3 10"/>
+    <path d="M360 321C339 286 284 299 284 342C284 382 323 405 360 438C397 405 436 382 436 342C436 299 381 286 360 321Z" stroke="#D4A09A" stroke-opacity=".82" stroke-width="2.4"/>
+    <path d="M188 267C181 255 162 259 162 274C162 288 175 296 188 307C201 296 214 288 214 274C214 259 195 255 188 267Z" stroke="#D4A09A" stroke-opacity=".7" stroke-width="1.7"/>
+    <path d="M539 461C532 449 513 453 513 468C513 482 526 490 539 501C552 490 565 482 565 468C565 453 546 449 539 461Z" stroke="#B79B73" stroke-opacity=".72" stroke-width="1.7"/>
+    <circle cx="130" cy="428" r="4" fill="#B79B73" fill-opacity=".68"/>
+    <circle cx="584" cy="240" r="4" fill="#D4A09A" fill-opacity=".68"/>
+    <circle cx="456" cy="592" r="3.5" fill="#1E3A5F" fill-opacity=".28"/>
+  </g>
+</svg>
