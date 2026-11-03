@@ -87,13 +87,10 @@ export default function Contact() {
           onChange={clearStatus}
           autoComplete="on"
           aria-labelledby="consultation-title"
-          aria-describedby="form-data-note"
           aria-busy={submitState === 'submitting'}
         >
           <h2 id="consultation-title">Đặt lịch hẹn</h2>
           <p className="form-intro">Để lại thông tin và chọn nhu cầu tổng quát để phòng khám liên hệ trao đổi, xác nhận thời gian phù hợp.</p>
-          {clinic.draft && <p className="notice"><strong>Bản thử nghiệm:</strong> chưa gửi dữ liệu thật qua biểu mẫu cho đến khi phòng khám thay hoặc xác nhận nhà cung cấp được phép xử lý dữ liệu sức khỏe nhạy cảm. Vui lòng gọi điện/Zalo nếu cần liên hệ.</p>}
-          <p id="form-data-note" className="notice">Thông tin được chuyển đến phòng khám để liên hệ với bạn. Nhóm nhu cầu bạn chọn có thể phản ánh dữ liệu sức khỏe nhạy cảm; chỉ chọn nhóm tổng quát và không cung cấp bệnh án, kết quả xét nghiệm hoặc thông tin sức khỏe chi tiết.</p>
           <p className="field-hint required-note">Các trường có dấu * là bắt buộc.</p>
 
           <input type="hidden" name="_subject" value="Yêu cầu tư vấn mới từ website phòng khám" />
