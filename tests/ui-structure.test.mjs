@@ -104,3 +104,13 @@ test('call actions and maternal background motifs remain present and motion-safe
   assert.match(css, /maternal-embrace\.svg/);
   assert.match(css, /heart-orbit\.svg/);
 });
+
+test('footer groups customer help and centers the clinic copyright', () => {
+  const footer = readFileSync('src/components/Footer.tsx', 'utf8');
+
+  assert.match(footer, /footer-help[\s\S]*to="\/faq">Câu hỏi thường gặp/);
+  assert.doesNotMatch(footer, /footer-bottom[\s\S]*<nav/);
+  assert.match(footer, /clinic\.policyName/);
+  assert.match(css, /\.footer-bottom \{[^}]*justify-content: center;/);
+  assert.match(css, /\.footer::before, \.footer::after/);
+});
